@@ -12,7 +12,7 @@
     "monthlyCapUsd": 5,
     "spentOrReservedUsd": 0.022748,
     "remainingUsd": 4.977252,
-    "records": 12
+    "records": 13
   },
   "results": [
     {
@@ -284,6 +284,44 @@
         "rating": 0,
         "reviewCount": 0,
         "observedTitle": "Video Transcriber - Video & Audio to Text Transcript"
+      },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "sian-incredibly-fast-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "sian.agency~INCREDIBLY-FAST-audio-transcriber",
+      "displayName": "Incredibly Fast Audio Transcriber by Sian",
+      "storeUrl": "https://apify.com/sian.agency/INCREDIBLY-FAST-audio-transcriber",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/sian.agency~INCREDIBLY-FAST-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 483,
+        "totalUsers30Days": 235,
+        "totalRuns30Days": null,
+        "rating": 5,
+        "reviewCount": 2,
+        "observedTitle": "Transcribe Video to Text & Audio to Text — 99+ Languages"
       },
       "output": {
         "itemCount": 0,

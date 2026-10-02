@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "brand": "CanaryIndex",
+  "tagline": "Live scorecards for AI-agent tools",
+  "methodVersion": "1.0.0",
+  "siteUrl": "https://alidaram99.github.io/canaryindex/",
+  "repositoryUrl": "https://github.com/alidaram99/canaryindex",
+  "monthlyBudgetUsd": 5,
+  "runTimeoutMs": 300000,
+  "perRunMaxChargeUsd": 0.05,
+  "indexNowKey": "8459e4b1d8cc4f46a7c96b963074d82a",
+  "budgetBucketsUsdPerUnit": [0.003, 0.005, 0.01, 0.02, 0.05],
+  "categories": [
+    {
+      "id": "document-to-markdown",
+      "title": "Document to Markdown",
+      "unit": "page",
+      "qualityThreshold": 0.8,
+      "fixture": {
+        "id": "w3c-dummy-pdf-v1",
+        "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "sourcePage": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/",
+        "licenseNote": "Public W3C accessibility test fixture; only the three expected words are republished.",
+        "expectedText": "Dummy PDF file",
+        "expectedTokens": ["dummy", "pdf", "file"],
+        "units": 1
+      }
+    },
+    {
+      "id": "audio-to-text",
+      "title": "Audio and video to text",
+      "unit": "started audio minute",
+      "qualityThreshold": 0.7,
+      "fixture": {
+        "id": "nasa-armstrong-v1",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Armstrong_Small_Step.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Armstrong_Small_Step.ogg",
+        "licenseNote": "NASA recording in the public domain; attribution and source are retained.",
+        "expectedText": "And uh step off the LM now. That's one small step for a man, one giant leap for mankind.",
+        "expectedTexts": [
+          "And uh step off the LM now. That's one small step for a man, one giant leap for mankind.",
+          "I'm going to step off the LM now. That's one small step for man. One giant leap for mankind."
+        ],
+        "units": 1
+      }
+    }
+  ],
+  "tools": [
+    {
+      "key": "dropin-apis-document-to-markdown",
+      "category": "document-to-markdown",
+      "actorId": "dropin-apis~document-to-markdown",
+      "displayName": "Document to Markdown by Drop-in APIs",
+      "storeUrl": "https://apify.com/dropin-apis/document-to-markdown",
+      "ownedByPublisher": true,
+      "maxChargeUsd": 0.02,
+      "input": {
+        "urls": ["$FIXTURE_URL"],
+        "maxPages": 1,
+        "chunkSize": 0
+      },
+      "textPaths": ["markdown"],
+      "successPaths": [],
+      "errorPaths": ["error", "errorMessage", "errors"],
+      "fallbackEventPrices": {
+        "page-converted": 0.0045,
+        "apify-actor-start": 0.0005
+      }
+    },
+    {
+      "key": "memo23-pdf-text-extractor",
+      "category": "document-to-markdown",
+      "actorId": "memo23~pdf-text-extractor",
+      "displayName": "PDF Text Extractor by memo23",
+      "storeUrl": "https://apify.com/memo23/pdf-text-extractor",
+      "ownedByPublisher": false,
+      "maxChargeUsd": 0.02,
+      "input": {
+        "urls": ["$FIXTURE_URL"],
+        "includeMarkdown": true,
+        "includeFullText": true,
+        "includePerPageText": false,
+        "ocrScannedPages": false
+      },
+      "textPaths": ["markdown", "fullText", "text", "content"],
+      "successPaths": ["success", "status"],
+      "errorPaths": ["error", "errorMessage", "errors"],
+      "fallbackEventPrices": {}
+    },
+    {
+      "key": "gochujang-pdf-text-extractor",
+      "category": "document-to-markdown",
+      "actorId": "gochujang~pdf-text-extractor",
+      "displayName": "PDF Text Extractor by Gochujang",
+      "storeUrl": "https://apify.com/gochujang/pdf-text-extractor",
+      "ownedByPublisher": false,
+      "maxChargeUsd": 0.05,
+      "input": {
+        "url": "$FIXTURE_URL",
+        "outputFormat": "markdown",
+        "maxPages": 1,
+        "extractTables": false,
+        "enableOcr": false
+      },
+      "textPaths": ["markdown", "text", "content"],
+      "successPaths": ["success", "status"],
+      "errorPaths": ["error", "errorMessage", "errors"],
+      "fallbackEventPrices": {}
+    },
+    {
+      "key": "dropin-apis-media-url-transcriber",
+      "category": "audio-to-text",
+      "actorId": "dropin-apis~media-url-transcriber",
+      "displayName": "Media URL Transcriber by Drop-in APIs",
+      "storeUrl": "https://apify.com/dropin-apis/media-url-transcriber",
+      "ownedByPublisher": true,
+      "maxChargeUsd": 0.03,
+      "input": {
+        "urls": ["$FIXTURE_URL"],
+        "model": "base",
+        "language": "en",
+        "outputFormats": ["text"],
+        "maxMinutesPerFile": 1
+      },
+      "textPaths": ["text"],
+      "successPaths": ["status"],
+      "errorPaths": ["error", "errorMessage", "errors"],
+      "fallbackEventPrices": {
+        "audio-minute-base": 0.006,
+        "apify-actor-start": 0.00005
+      }
+    },
+    {
+      "key": "marielise-video-transcriber-ultimate",
+      "category": "audio-to-text",
+      "actorId": "marielise.dev~video-transcriber-ultimate",
+      "displayName": "Video Transcriber Ultimate by Marielise",
+      "storeUrl": "https://apify.com/marielise.dev/video-transcriber-ultimate",
+      "ownedByPublisher": false,
+      "maxChargeUsd": 0.04,
+      "input": {
+        "url": "$FIXTURE_URL",
+        "language": "en",
+        "includeTimestamps": true,
+        "outputFormat": "json",
+        "useResidentialProxy": false
+      },
+      "textPaths": ["text", "transcript"],
+      "successPaths": ["status"],
+      "errorPaths": ["error", "errorMessage", "errors"],
+      "fallbackEventPrices": {}
+    },
+    {
+      "key": "sian-incredibly-fast-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "sian.agency~INCREDIBLY-FAST-audio-transcriber",
+      "displayName": "Incredibly Fast Audio Transcriber by Sian",
+      "storeUrl": "https://apify.com/sian.agency/INCREDIBLY-FAST-audio-transcriber",
+      "ownedByPublisher": false,
+      "maxChargeUsd": 0.15,
+      "input": {
+        "audioUrls": ["$FIXTURE_URL"],
+        "language": "english",
+        "translateToEnglish": false,
+        "useEuServers": false,
+        "speakerDiarization": false
+      },
+      "textPaths": ["transcript", "text"],
+      "successPaths": ["status"],
+      "errorPaths": ["error", "errorMessage", "errors"],
+      "fallbackEventPrices": {}
+    },
+    {
+      "key": "memo23-video-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "memo23~video-audio-transcriber",
+      "displayName": "Video & Audio Transcriber by memo23",
+      "storeUrl": "https://apify.com/memo23/video-audio-transcriber",
+      "ownedByPublisher": false,
+      "maxChargeUsd": 0.05,
+      "input": {
+        "mediaUrls": ["$FIXTURE_URL"],
+        "language": "en",
+        "translateToEnglish": false,
+        "wordTimestamps": false,
+        "speakerLabels": false,
+        "summarize": false,
+        "maxMinutesPerItem": 1
+      },
+      "textPaths": ["text", "transcript"],
+      "successPaths": ["status"],
+      "errorPaths": ["error", "errorMessage", "errors"],
+      "fallbackEventPrices": {}
+    }
+  ]
+}

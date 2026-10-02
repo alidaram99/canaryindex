@@ -1,0 +1,24 @@
+{
+  "name": "canaryindex",
+  "version": "0.1.0",
+  "description": "Neutral, reproducible live scorecards for AI-agent tools.",
+  "type": "module",
+  "bin": {
+    "canaryindex": "./bin/canaryindex.mjs"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "keywords": [
+    "ai-agents",
+    "mcp",
+    "apify",
+    "benchmark",
+    "tool-routing",
+    "scorecard"
+  ],
+  "license": "MIT"
+}

@@ -60,7 +60,7 @@ export async function reserve({ ledgerDir, runKey, tool, fixture, reservedUsd, m
   return { record: { ...record, _file: file }, created: true, budget };
 }
 
-export async function finalizeReservation(record, { actualCostUsd, apifyRunId, status, now = new Date() }) {
+export async function finalizeReservation(record, { actualCostUsd, apifyRunId, status, note, now = new Date() }) {
   const next = {
     ...record,
     _file: undefined,
@@ -68,9 +68,9 @@ export async function finalizeReservation(record, { actualCostUsd, apifyRunId, s
     completedAt: now.toISOString(),
     actualCostUsd: Number.isFinite(actualCostUsd) ? round(actualCostUsd) : null,
     apifyRunId: apifyRunId ?? null,
-    note: Number.isFinite(actualCostUsd)
+    note: note ?? (Number.isFinite(actualCostUsd)
       ? 'Authenticated final run data settled the reservation to the measured buyer cost.'
-      : 'Cost was unavailable or unstable; the full reservation remains counted against the monthly cap.',
+      : 'Cost was unavailable or unstable; the full reservation remains counted against the monthly cap.'),
   };
   await writeJson(record._file, next);
   return { ...next, _file: record._file };

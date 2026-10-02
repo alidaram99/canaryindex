@@ -38,7 +38,11 @@ async function request(token, method, pathname, { query, body, timeoutMs = 30000
     });
     const text = await readResponseText(response, maxResponseBytes);
     const parsed = text ? JSON.parse(text) : null;
-    if (!response.ok) throw new Error(`Apify ${method} ${pathname} returned ${response.status}: ${parsed?.error?.message ?? text.slice(0, 300)}`);
+    if (!response.ok) {
+      const error = new Error(`Apify ${method} ${pathname} returned ${response.status}: ${parsed?.error?.message ?? text.slice(0, 300)}`);
+      error.apifyStatus = response.status;
+      throw error;
+    }
     return parsed?.data ?? parsed;
   } finally {
     clearTimeout(timer);

@@ -19,8 +19,9 @@ export async function gitCheckpoint(repoDir, message) {
   await execFileAsync('git', ['-C', repoDir, 'push', 'origin', 'HEAD:main']);
 }
 
-export function canSettleFailureAtZero(startAttempted) {
-  return startAttempted === false;
+export function canSettleFailureAtZero(startAttempted, error = null) {
+  if (startAttempted === false) return true;
+  return [400, 401, 402, 403, 404, 409, 422, 429].includes(error?.apifyStatus);
 }
 
 function currentPricingInfo(actor) {
@@ -93,7 +94,7 @@ function runSnapshot(run) {
   };
 }
 
-function errorResult(tool, category, reason, runId = null) {
+function errorResult(tool, category, reason, runId = null, { storeItem = null, httpStatus = null } = {}) {
   return {
     schemaVersion: 1,
     toolKey: tool.key,
@@ -102,12 +103,13 @@ function errorResult(tool, category, reason, runId = null) {
     displayName: tool.displayName,
     storeUrl: tool.storeUrl,
     ownedByPublisher: tool.ownedByPublisher,
-    publicListing: false,
+    publicListing: Boolean(storeItem),
     runId,
     runStatus: 'FAILED_TO_OBSERVE',
     accepted: false,
     quality: 0,
     reason,
+    httpStatus,
     units: category.fixture.units,
     latencyMs: null,
     cost: {
@@ -117,10 +119,34 @@ function errorResult(tool, category, reason, runId = null) {
       costKnown: false,
       note: 'No stable billing observation was available; the full reservation remains in the budget ledger.'
     },
-    storeStats: null,
+    storeStats: sanitizeStoreStats(storeItem),
     output: { itemCount: 0, items: [] },
     run: null,
   };
+}
+
+function historicalDefiniteNoRun(result) {
+  if (result?.runId != null) return false;
+  const match = String(result?.reason ?? '').match(/Apify POST .* returned (\d{3}):/);
+  const status = result?.httpStatus ?? Number(match?.[1]);
+  return [400, 401, 402, 403, 404, 409, 422, 429].includes(status);
+}
+
+async function reconcileHistoricalRejectedStarts(ledgerDir, historyDir) {
+  const histories = [];
+  for (const file of await listJsonFiles(historyDir)) histories.push(await readJson(file));
+  for (const record of await readLedger(ledgerDir)) {
+    if (record.status === 'completed') continue;
+    const run = histories.find((item) => item.runKey === record.runKey);
+    const result = run?.results?.find((item) => item.toolKey === record.toolKey);
+    if (!historicalDefiniteNoRun(result)) continue;
+    await finalizeReservation(record, {
+      actualCostUsd: 0,
+      apifyRunId: null,
+      status: 'settled',
+      note: `Reconciled to $0 because Apify returned HTTP ${result.httpStatus ?? '4xx'} before creating a run; the published observation has no run ID.`,
+    });
+  }
 }
 
 export async function runWeekly({ configFile, publicRepoDir, token, runKey = `manual-${isoWeekKey()}`, checkpoint = gitCheckpoint, now = new Date() }) {
@@ -128,6 +154,7 @@ export async function runWeekly({ configFile, publicRepoDir, token, runKey = `ma
   const config = await readJson(configFile);
   const ledgerDir = path.join(publicRepoDir, 'data', 'ledger');
   const historyDir = path.join(publicRepoDir, 'data', 'history');
+  await reconcileHistoricalRejectedStarts(ledgerDir, historyDir);
   const prior = await findExistingRun(historyDir, runKey);
   const runFile = prior?.file ?? path.join(historyDir, `${now.toISOString().replace(/[:.]/g, '-')}-${runKey.replace(/[^a-zA-Z0-9._-]/g, '-')}.json`);
   const runRecord = prior?.record ?? {
@@ -170,9 +197,10 @@ export async function runWeekly({ configFile, publicRepoDir, token, runKey = `ma
     let ledgerActual = null;
     let ledgerStatus = 'unknown';
     let startAttempted = false;
+    let storeItem = null;
     const started = Date.now();
     try {
-      const storeItem = await getStoreItem(tool.actorId);
+      storeItem = await getStoreItem(tool.actorId);
       const actor = await getActor(token, tool.actorId);
       const pricingInfo = storeItem?.currentPricingInfo ?? currentPricingInfo(actor);
       if (pricingInfo?.pricingModel !== 'PAY_PER_EVENT') {
@@ -238,11 +266,11 @@ export async function runWeekly({ configFile, publicRepoDir, token, runKey = `ma
           error.message = `${error.message} Abort also failed: ${abortError.message}`;
         }
       }
-      if (!runId && canSettleFailureAtZero(startAttempted)) {
+      if (!runId && canSettleFailureAtZero(startAttempted, error)) {
         ledgerActual = 0;
         ledgerStatus = 'settled';
       }
-      result = errorResult(tool, category, error.message, runId);
+      result = errorResult(tool, category, error.message, runId, { storeItem, httpStatus: error.apifyStatus ?? null });
     }
     assertSafePublicResult(result);
     runRecord.results.push(result);

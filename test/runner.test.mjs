@@ -5,6 +5,8 @@ import { canSettleFailureAtZero, evidenceExcerpt } from '../src/runner.mjs';
 test('only a proven pre-start failure may release the reservation to zero', () => {
   assert.equal(canSettleFailureAtZero(false), true);
   assert.equal(canSettleFailureAtZero(true), false);
+  assert.equal(canSettleFailureAtZero(true, { apifyStatus: 403 }), true);
+  assert.equal(canSettleFailureAtZero(true, { apifyStatus: 500 }), false);
 });
 
 test('public evidence is field-allowlisted and bounded', () => {

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-02T22:40:37.234Z",
+  "methodVersion": "1.0.0",
+  "neutralRanking": true,
+  "categories": {
+    "document-to-markdown": {
+      "category": "document-to-markdown",
+      "title": "Document to Markdown",
+      "unit": "page",
+      "qualityThreshold": 0.8,
+      "method": "Filter to public tools whose latest objective canary passed. Best-quality sorts quality, reliability, effective cost, then latency. Budget routes sort cost first. No payment, affiliate status, or publisher identity affects ordering.",
+      "bestQuality": [],
+      "budgetsUsdPerUnit": {
+        "0.003": [],
+        "0.005": [],
+        "0.01": [],
+        "0.02": [],
+        "0.05": []
+      },
+      "tools": []
+    },
+    "audio-to-text": {
+      "category": "audio-to-text",
+      "title": "Audio and video to text",
+      "unit": "started audio minute",
+      "qualityThreshold": 0.7,
+      "method": "Filter to public tools whose latest objective canary passed. Best-quality sorts quality, reliability, effective cost, then latency. Budget routes sort cost first. No payment, affiliate status, or publisher identity affects ordering.",
+      "bestQuality": [],
+      "budgetsUsdPerUnit": {
+        "0.003": [],
+        "0.005": [],
+        "0.01": [],
+        "0.02": [],
+        "0.05": []
+      },
+      "tools": []
+    }
+  }
+}

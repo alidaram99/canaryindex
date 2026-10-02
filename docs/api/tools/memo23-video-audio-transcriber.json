@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-02T22:40:37.234Z",
+  "tool": {
+    "toolKey": "memo23-video-audio-transcriber",
+    "category": "audio-to-text",
+    "actorId": "memo23~video-audio-transcriber",
+    "displayName": "Video & Audio Transcriber by memo23",
+    "storeUrl": "https://apify.com/memo23/video-audio-transcriber",
+    "ownedByPublisher": false,
+    "publicListing": false,
+    "observations": 0,
+    "observationFailures": 1,
+    "acceptedRuns": 0,
+    "reliability": null,
+    "latestAccepted": false,
+    "latestQuality": 0,
+    "latestCostPerUnitUsd": null,
+    "effectiveCostPerAcceptedUnitUsd": null,
+    "medianLatencyMs": null,
+    "latestObservedAt": "2026-10-02T22:40:35.862Z",
+    "latestRunStatus": "FAILED_TO_OBSERVE",
+    "latestReason": "Apify POST /acts/memo23~video-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+    "stats": null
+  },
+  "observations": [
+    {
+      "schemaVersion": 1,
+      "toolKey": "memo23-video-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "memo23~video-audio-transcriber",
+      "displayName": "Video & Audio Transcriber by memo23",
+      "storeUrl": "https://apify.com/memo23/video-audio-transcriber",
+      "ownedByPublisher": false,
+      "publicListing": false,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/memo23~video-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": null,
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    }
+  ]
+}

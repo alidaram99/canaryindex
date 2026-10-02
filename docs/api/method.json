@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "methodVersion": "1.0.0",
+  "categories": [
+    {
+      "id": "document-to-markdown",
+      "title": "Document to Markdown",
+      "unit": "page",
+      "qualityThreshold": 0.8,
+      "fixture": {
+        "id": "w3c-dummy-pdf-v1",
+        "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        "sourcePage": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/",
+        "licenseNote": "Public W3C accessibility test fixture; only the three expected words are republished.",
+        "expectedText": "Dummy PDF file",
+        "expectedTokens": [
+          "dummy",
+          "pdf",
+          "file"
+        ],
+        "units": 1
+      }
+    },
+    {
+      "id": "audio-to-text",
+      "title": "Audio and video to text",
+      "unit": "started audio minute",
+      "qualityThreshold": 0.7,
+      "fixture": {
+        "id": "nasa-armstrong-v1",
+        "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Armstrong_Small_Step.ogg",
+        "sourcePage": "https://commons.wikimedia.org/wiki/File:Armstrong_Small_Step.ogg",
+        "licenseNote": "NASA recording in the public domain; attribution and source are retained.",
+        "expectedText": "And uh step off the LM now. That's one small step for a man, one giant leap for mankind.",
+        "expectedTexts": [
+          "And uh step off the LM now. That's one small step for a man, one giant leap for mankind.",
+          "I'm going to step off the LM now. That's one small step for man. One giant leap for mankind."
+        ],
+        "units": 1
+      }
+    }
+  ],
+  "monthlyBudgetUsd": 5,
+  "perRunMaxChargeUsd": 0.05,
+  "rankingInputs": [
+    "objective quality",
+    "historical reliability",
+    "effective cost per accepted unit",
+    "latency"
+  ],
+  "excludedInputs": [
+    "payment",
+    "sponsorship",
+    "affiliate relationship",
+    "publisher ownership"
+  ]
+}

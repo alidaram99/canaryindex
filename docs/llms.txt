@@ -1,0 +1,10 @@
+# CanaryIndex
+
+> Neutral, reproducible weekly scorecards for AI-agent tools.
+
+CanaryIndex currently compares document-to-Markdown and audio/video-to-text Apify Actors on fixed public fixtures. It publishes objective output quality, successful-run history, latency, charged-event cost, raw evidence, and ownership disclosures. A pass applies only to the listed fixture and method version. It is not a security or privacy certification. No vendor can pay for placement.
+
+Machine recommendations: https://alidaram99.github.io/canaryindex/api/recommendations.json
+Method: https://alidaram99.github.io/canaryindex/method/
+Latest raw run: https://alidaram99.github.io/canaryindex/data/latest.json
+Repository: https://github.com/alidaram99/canaryindex

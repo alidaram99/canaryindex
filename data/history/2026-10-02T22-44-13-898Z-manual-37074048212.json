@@ -12,7 +12,7 @@
     "monthlyCapUsd": 5,
     "spentOrReservedUsd": 0.022748,
     "remainingUsd": 4.977252,
-    "records": 13
+    "records": 14
   },
   "results": [
     {
@@ -322,6 +322,44 @@
         "rating": 5,
         "reviewCount": 2,
         "observedTitle": "Transcribe Video to Text & Audio to Text — 99+ Languages"
+      },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "memo23-video-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "memo23~video-audio-transcriber",
+      "displayName": "Video & Audio Transcriber by memo23",
+      "storeUrl": "https://apify.com/memo23/video-audio-transcriber",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/memo23~video-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 424,
+        "totalUsers30Days": 168,
+        "totalRuns30Days": null,
+        "rating": 4.954910215788066,
+        "reviewCount": 2,
+        "observedTitle": "Media Transcriber · Any URL, RSS & Podcast to Text"
       },
       "output": {
         "itemCount": 0,

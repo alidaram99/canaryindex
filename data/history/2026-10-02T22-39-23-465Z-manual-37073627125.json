@@ -10,9 +10,9 @@
   "budget": {
     "month": "2026-10",
     "monthlyCapUsd": 5,
-    "spentOrReservedUsd": 0.281806,
-    "remainingUsd": 4.718194,
-    "records": 6
+    "spentOrReservedUsd": 0.331806,
+    "remainingUsd": 4.668194,
+    "records": 7
   },
   "results": [
     {
@@ -281,6 +281,36 @@
       "accepted": false,
       "quality": 0,
       "reason": "Apify POST /acts/sian.agency~INCREDIBLY-FAST-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": null,
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "memo23-video-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "memo23~video-audio-transcriber",
+      "displayName": "Video & Audio Transcriber by memo23",
+      "storeUrl": "https://apify.com/memo23/video-audio-transcriber",
+      "ownedByPublisher": false,
+      "publicListing": false,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/memo23~video-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
       "units": 1,
       "latencyMs": null,
       "cost": {

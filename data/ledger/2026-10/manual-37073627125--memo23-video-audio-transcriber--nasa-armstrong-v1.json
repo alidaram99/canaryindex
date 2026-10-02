@@ -7,10 +7,10 @@
   "actorId": "memo23~video-audio-transcriber",
   "fixtureId": "nasa-armstrong-v1",
   "reservedUsd": 0.05,
-  "status": "pending",
+  "status": "unknown",
   "createdAt": "2026-10-02T22:39:23.465Z",
-  "completedAt": null,
+  "completedAt": "2026-10-02T22:40:34.558Z",
   "actualCostUsd": null,
   "apifyRunId": null,
-  "note": "Pending reservations count at their full value until a settled authenticated run supplies a lower verified cost."
+  "note": "Cost was unavailable or unstable; the full reservation remains counted against the monthly cap."
 }

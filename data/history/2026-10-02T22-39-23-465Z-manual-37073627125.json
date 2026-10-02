@@ -10,9 +10,9 @@
   "budget": {
     "month": "2026-10",
     "monthlyCapUsd": 5,
-    "spentOrReservedUsd": 0.091806,
-    "remainingUsd": 4.908194,
-    "records": 4
+    "spentOrReservedUsd": 0.131806,
+    "remainingUsd": 4.868194,
+    "records": 5
   },
   "results": [
     {
@@ -236,6 +236,36 @@
           "computeUnits": 0.008721666666666667
         }
       }
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "marielise-video-transcriber-ultimate",
+      "category": "audio-to-text",
+      "actorId": "marielise.dev~video-transcriber-ultimate",
+      "displayName": "Video Transcriber Ultimate by Marielise",
+      "storeUrl": "https://apify.com/marielise.dev/video-transcriber-ultimate",
+      "ownedByPublisher": false,
+      "publicListing": false,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/marielise.dev~video-transcriber-ultimate/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": null,
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
     }
   ]
 }

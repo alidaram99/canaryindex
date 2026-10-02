@@ -10,9 +10,9 @@
   "budget": {
     "month": "2026-10",
     "monthlyCapUsd": 5,
-    "spentOrReservedUsd": 0.131806,
-    "remainingUsd": 4.868194,
-    "records": 5
+    "spentOrReservedUsd": 0.281806,
+    "remainingUsd": 4.718194,
+    "records": 6
   },
   "results": [
     {
@@ -251,6 +251,36 @@
       "accepted": false,
       "quality": 0,
       "reason": "Apify POST /acts/marielise.dev~video-transcriber-ultimate/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": null,
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "sian-incredibly-fast-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "sian.agency~INCREDIBLY-FAST-audio-transcriber",
+      "displayName": "Incredibly Fast Audio Transcriber by Sian",
+      "storeUrl": "https://apify.com/sian.agency/INCREDIBLY-FAST-audio-transcriber",
+      "ownedByPublisher": false,
+      "publicListing": false,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/sian.agency~INCREDIBLY-FAST-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
       "units": 1,
       "latencyMs": null,
       "cost": {

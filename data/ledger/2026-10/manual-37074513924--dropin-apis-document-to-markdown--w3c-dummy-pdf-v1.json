@@ -7,10 +7,10 @@
   "actorId": "dropin-apis~document-to-markdown",
   "fixtureId": "w3c-dummy-pdf-v1",
   "reservedUsd": 0.02,
-  "status": "pending",
+  "status": "completed",
   "createdAt": "2026-10-02T22:49:38.183Z",
-  "completedAt": null,
-  "actualCostUsd": null,
-  "apifyRunId": null,
-  "note": "Pending reservations count at their full value until a settled authenticated run supplies a lower verified cost."
+  "completedAt": "2026-10-02T22:50:02.449Z",
+  "actualCostUsd": 0.00023,
+  "apifyRunId": "qnubxu0IFMAyXtfqS",
+  "note": "Authenticated final run data settled the reservation to the measured buyer cost."
 }

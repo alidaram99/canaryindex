@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "brand": "CanaryIndex",
+  "methodVersion": "1.0.0",
+  "runKey": "manual-37074513924",
+  "startedAt": "2026-10-02T22:49:38.183Z",
+  "finishedAt": null,
+  "configSha256": "49db034cf9857a6cd238e7f4798260bfa5a9f0884eeb25ddd18cc76c7fdb711a",
+  "neutrality": "Publisher-owned tools are disclosed. Payment, sponsorship and ownership never affect scoring or ranking.",
+  "budget": {
+    "month": "2026-10",
+    "monthlyCapUsd": 5,
+    "spentOrReservedUsd": 0.022978,
+    "remainingUsd": 4.977022,
+    "records": 15
+  },
+  "results": [
+    {
+      "schemaVersion": 1,
+      "toolKey": "dropin-apis-document-to-markdown",
+      "category": "document-to-markdown",
+      "actorId": "dropin-apis~document-to-markdown",
+      "displayName": "Document to Markdown by Drop-in APIs",
+      "storeUrl": "https://apify.com/dropin-apis/document-to-markdown",
+      "ownedByPublisher": true,
+      "publicListing": false,
+      "runId": "qnubxu0IFMAyXtfqS",
+      "runStatus": "SUCCEEDED",
+      "accepted": true,
+      "quality": 1,
+      "reason": "All expected fixture tokens were present.",
+      "evidence": {
+        "score": 1,
+        "found": [
+          "dummy",
+          "pdf",
+          "file"
+        ],
+        "missing": []
+      },
+      "units": 1,
+      "latencyMs": 6045,
+      "cost": {
+        "observedAccountSpendUsd": 0.00023,
+        "comparativeCostUsd": 0.005,
+        "comparativeCostPerUnitUsd": 0.005,
+        "costKnown": true,
+        "priceTier": "FREE",
+        "chargedEvents": [
+          {
+            "event": "apify-actor-start",
+            "count": 1,
+            "priceUsd": 0.0005,
+            "subtotalUsd": 0.0005
+          },
+          {
+            "event": "page-converted",
+            "count": 1,
+            "priceUsd": 0.0045,
+            "subtotalUsd": 0.0045
+          }
+        ],
+        "usageTotalUsd": 0.00023,
+        "note": "The publisher is exempt from its own custom Actor events. Comparative cost simulates the public event count from delivered fixture units; the raw self-run counts and actual account usage remain published separately."
+      },
+      "storeStats": null,
+      "output": {
+        "itemCount": 1,
+        "extractedText": "<!-- Page 1 -->\n\nDummy PDF file",
+        "rawSha256": "60c2ad59b92975ea72d03f0d906fe55f2bc337c3cfc8cf1a7c2026b16ad9fe67",
+        "items": [
+          {
+            "markdown": "<!-- Page 1 -->\n\nDummy PDF file"
+          }
+        ]
+      },
+      "run": {
+        "id": "qnubxu0IFMAyXtfqS",
+        "status": "SUCCEEDED",
+        "buildId": "Q4QYaB90WYPmRv39T",
+        "buildNumber": "0.1.2",
+        "startedAt": "2026-10-02T22:49:40.215Z",
+        "finishedAt": "2026-10-02T22:49:46.380Z",
+        "usageTotalUsd": 0.00022984226922194168,
+        "chargedEventCounts": {
+          "apify-actor-start": 1,
+          "page-converted": 1
+        },
+        "stats": {
+          "runTimeSecs": 6.045,
+          "computeUnits": 0.0008395833333333333
+        }
+      }
+    }
+  ]
+}

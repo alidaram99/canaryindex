@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-02T22:45:13.769Z",
+  "generatedAt": "2026-10-02T22:50:45.301Z",
   "tool": {
     "toolKey": "memo23-video-audio-transcriber",
     "category": "audio-to-text",
@@ -10,7 +10,7 @@
     "ownedByPublisher": false,
     "publicListing": true,
     "observations": 0,
-    "observationFailures": 2,
+    "observationFailures": 3,
     "acceptedRuns": 0,
     "reliability": null,
     "latestAccepted": false,
@@ -18,7 +18,7 @@
     "latestCostPerUnitUsd": null,
     "effectiveCostPerAcceptedUnitUsd": null,
     "medianLatencyMs": null,
-    "latestObservedAt": "2026-10-02T22:45:12.712Z",
+    "latestObservedAt": "2026-10-02T22:50:43.829Z",
     "latestRunStatus": "FAILED_TO_OBSERVE",
     "latestReason": "Apify POST /acts/memo23~video-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
     "stats": {
@@ -55,6 +55,44 @@
         "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
       },
       "storeStats": null,
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "memo23-video-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "memo23~video-audio-transcriber",
+      "displayName": "Video & Audio Transcriber by memo23",
+      "storeUrl": "https://apify.com/memo23/video-audio-transcriber",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/memo23~video-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 424,
+        "totalUsers30Days": 168,
+        "totalRuns30Days": null,
+        "rating": 4.954910215788066,
+        "reviewCount": 2,
+        "observedTitle": "Media Transcriber · Any URL, RSS & Podcast to Text"
+      },
       "output": {
         "itemCount": 0,
         "items": []

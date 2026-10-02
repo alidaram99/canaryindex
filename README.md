@@ -22,6 +22,10 @@ The initial set is selected from the highest-used compatible Apify Store Actors 
 
 Website crawlers, OCR-only tools, subtitle extractors and social-video downloaders are deliberately not mixed into these categories.
 
+### Current observation limit
+
+The first live run on 2026-10-03 exposed an account-level constraint rather than hiding it: the current Apify Creator plan can run the publisher's own Actors, but Apify returns HTTP 403 when it tries to run third-party public Actors. Those tools are shown as **failed to observe**, not as failed products, and are excluded from recommendations. Comparable third-party scores begin only when the account plan supports public Actor runs (or another budget-capped payment rail is verified). The raw response and zero-spend reconciliation remain public.
+
 ## Ask an agent
 
 No API key is needed to read the static JSON:

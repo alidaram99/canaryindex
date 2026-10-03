@@ -74,6 +74,27 @@ test('site build emits scorecards, agent JSON, raw data and discovery files', as
     assert.equal(latest.results[0].cost.simulationNote, 'simulated FREE-tier price — owner run was exempt');
     const toolPage = await readFile(path.join(dir, 'docs', 'tools', 'dropin-apis-document-to-markdown', 'index.html'), 'utf8');
     assert.match(toolPage, /\$0\.00500.*simulated FREE-tier price — owner run was exempt/);
+
+    // Sitemap must list only canonical HTML pages — machine endpoints (the
+    // recommendations/latest JSON) belong in llms.txt only.
+    assert.doesNotMatch(sitemap, /\.json/);
+
+    // SEO guard: every generated <title> and meta description must stay within
+    // Google's practical display limits (~60 / ~160 chars), across every page
+    // this build produces, not just the ones exercised by name above.
+    const pages = [
+      path.join(dir, 'docs', 'index.html'),
+      path.join(dir, 'docs', 'method', 'index.html'),
+      path.join(dir, 'docs', 'tools', 'dropin-apis-document-to-markdown', 'index.html'),
+      path.join(dir, 'docs', 'tools', 'memo23-pdf-text-extractor', 'index.html'),
+    ];
+    for (const pagePath of pages) {
+      const html = await readFile(pagePath, 'utf8');
+      const title = /<title>([^<]*)<\/title>/.exec(html)?.[1] ?? '';
+      const description = /<meta name="description" content="([^"]*)"/.exec(html)?.[1] ?? '';
+      assert.ok(title.length > 0 && title.length <= 60, `${pagePath}: title is ${title.length} chars (max 60): ${title}`);
+      assert.ok(description.length > 0 && description.length <= 160, `${pagePath}: description is ${description.length} chars (max 160): ${description}`);
+    }
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

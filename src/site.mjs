@@ -157,7 +157,10 @@ function toolPage(config, tool, runs) {
     license: 'https://opensource.org/license/mit',
     distribution: { '@type': 'DataDownload', encodingFormat: 'application/json', contentUrl: `${config.siteUrl}api/tools/${tool.toolKey}.json` },
   };
-  return shell(config, `${tool.displayName} live scorecard — ${config.brand}`, `Reproducible live quality, cost, latency and availability observations for ${tool.actorId}.`, body, `tools/${tool.toolKey}/`, [dataset]);
+  // Keep this short and static — no dynamic PASS/FAIL/status word belongs in the
+  // <title>, since that would make a cached/shared title go stale the moment the
+  // next observation flips, and SEO titles should stay under ~60 chars.
+  return shell(config, `${tool.displayName} — ${config.brand}`, `Reproducible live quality, cost, latency and availability observations for ${tool.actorId}.`, body, `tools/${tool.toolKey}/`, [dataset]);
 }
 
 function robotsTxt(config) {
@@ -212,11 +215,12 @@ export async function buildSite({ configFile, publicRepoDir }) {
   }
   if (latest) await writeJson(path.join(docsDir, 'data', 'latest.json'), annotateRunCosts(latest));
   else await writeJson(path.join(docsDir, 'data', 'latest.json'), { schemaVersion: 1, status: 'NO_RUNS_YET', results: [] });
+  // Only canonical HTML pages belong in the XML sitemap. api/recommendations.json
+  // and data/latest.json are machine endpoints — they're advertised in llms.txt
+  // (see llmsText() above), not here.
   const urls = [
     config.siteUrl,
     `${config.siteUrl}method/`,
-    `${config.siteUrl}api/recommendations.json`,
-    `${config.siteUrl}data/latest.json`,
     ...summaries.map((tool) => `${config.siteUrl}tools/${tool.toolKey}/`),
   ];
   await writeFile(path.join(docsDir, 'sitemap.xml'), sitemapXml(urls, lastModified), 'utf8');

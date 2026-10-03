@@ -1,11 +1,12 @@
 import { listJsonFiles, readJson, round } from './util.mjs';
+import { annotateRunCosts, SIMULATED_FREE_TIER_PRICE_NOTE } from './cost-disclosure.mjs';
 
 export async function readHistory(historyDir) {
   const files = await listJsonFiles(historyDir);
   const runs = [];
   for (const file of files) {
     const value = await readJson(file);
-    if (value?.schemaVersion === 1 && Array.isArray(value.results)) runs.push(value);
+    if (value?.schemaVersion === 1 && Array.isArray(value.results)) runs.push(annotateRunCosts(value));
   }
   return runs.sort((a, b) => String(a.startedAt).localeCompare(String(b.startedAt)));
 }
@@ -24,6 +25,7 @@ export function summarizeTools(config, runs) {
     const latest = list.at(-1) ?? null;
     const completed = list.filter((item) => item.runStatus && !['NOT_RUN', 'FAILED_TO_OBSERVE'].includes(item.runStatus));
     const accepted = completed.filter((item) => item.accepted);
+    const effectiveCostIsSimulated = completed.some((item) => item.cost?.isSimulated === true);
     const allCostsKnown = completed.length > 0 && completed.every((item) => item.cost?.costKnown === true && Number.isFinite(item.cost?.comparativeCostUsd));
     const totalComparativeCost = allCostsKnown
       ? completed.reduce((sum, item) => sum + item.cost.comparativeCostUsd, 0)
@@ -44,7 +46,11 @@ export function summarizeTools(config, runs) {
       latestAccepted: latest?.accepted ?? false,
       latestQuality: latest?.quality ?? null,
       latestCostPerUnitUsd: latest?.cost?.comparativeCostPerUnitUsd ?? null,
+      latestCostIsSimulated: latest?.cost?.isSimulated === true,
+      latestCostSimulationNote: latest?.cost?.isSimulated === true ? SIMULATED_FREE_TIER_PRICE_NOTE : null,
       effectiveCostPerAcceptedUnitUsd: acceptedUnits && allCostsKnown ? round(totalComparativeCost / acceptedUnits) : null,
+      effectiveCostIsSimulated: allCostsKnown && effectiveCostIsSimulated,
+      effectiveCostSimulationNote: allCostsKnown && effectiveCostIsSimulated ? SIMULATED_FREE_TIER_PRICE_NOTE : null,
       medianLatencyMs: round(median(completed.map((item) => item.latencyMs)), 2),
       latestObservedAt: latest?.observedAt ?? null,
       latestRunStatus: latest?.runStatus ?? 'NOT_RUN',
@@ -79,6 +85,8 @@ export function recommendations(config, summaries) {
       qualityThreshold: category.qualityThreshold,
       method: 'Filter to public tools whose latest objective canary passed. Best-quality sorts quality, reliability, effective cost, then latency. Budget routes sort cost first. No payment, affiliate status, or publisher identity affects ordering.',
       bestQuality: byQuality.map((item) => item.toolKey),
+      bestQualityCostIsSimulated: byQuality[0]?.effectiveCostIsSimulated === true,
+      bestQualityCostSimulationNote: byQuality[0]?.effectiveCostIsSimulated === true ? SIMULATED_FREE_TIER_PRICE_NOTE : null,
       budgetsUsdPerUnit: budgets,
       tools: byQuality,
     };

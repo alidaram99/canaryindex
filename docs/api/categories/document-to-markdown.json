@@ -5,6 +5,8 @@
   "qualityThreshold": 0.8,
   "method": "Filter to public tools whose latest objective canary passed. Best-quality sorts quality, reliability, effective cost, then latency. Budget routes sort cost first. No payment, affiliate status, or publisher identity affects ordering.",
   "bestQuality": [],
+  "bestQualityCostIsSimulated": false,
+  "bestQualityCostSimulationNote": null,
   "budgetsUsdPerUnit": {
     "0.003": [],
     "0.005": [],

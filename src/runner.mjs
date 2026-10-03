@@ -4,6 +4,7 @@ import { promisify } from 'node:util';
 import { calculateRunCost, evaluateOutput } from './scoring.mjs';
 import { finalizeReservation, readLedger, reserve, summarizeBudget } from './budget.mjs';
 import { abortRun, getActor, getDatasetItems, getStoreItem, pollRun, settleRun, startRun } from './apify.mjs';
+import { SIMULATED_FREE_TIER_PRICE_NOTE } from './cost-disclosure.mjs';
 import { assertSafePublicResult, deepReplace, getPath, isoWeekKey, listJsonFiles, readJson, round, sha256, utcMonth, writeJson } from './util.mjs';
 
 const execFileAsync = promisify(execFile);
@@ -57,12 +58,14 @@ function categoryFor(config, tool) {
   return category;
 }
 
-function adjustedComparativeCounts(run, tool, units) {
+export function adjustedComparativeCounts(run, tool, units) {
   const counts = { ...(run.chargedEventCounts ?? {}) };
-  if (!tool.ownedByPublisher) return counts;
+  if (!tool.ownedByPublisher) return { counts, isSimulated: false };
   const customEvents = Object.keys(tool.fallbackEventPrices).filter((name) => name !== 'apify-actor-start');
-  if (customEvents.length === 1 && (counts[customEvents[0]] ?? 0) === 0) counts[customEvents[0]] = units;
-  return counts;
+  const eventName = customEvents.length === 1 ? customEvents[0] : null;
+  const isSimulated = Boolean(eventName && (counts[eventName] ?? 0) === 0);
+  if (isSimulated) counts[eventName] = units;
+  return { counts, isSimulated };
 }
 
 function sanitizeStoreStats(item) {
@@ -117,6 +120,8 @@ function errorResult(tool, category, reason, runId = null, { storeItem = null, h
       comparativeCostUsd: null,
       comparativeCostPerUnitUsd: null,
       costKnown: false,
+      isSimulated: false,
+      simulationNote: null,
       note: 'No stable billing observation was available; the full reservation remains in the budget ledger.'
     },
     storeStats: sanitizeStoreStats(storeItem),
@@ -218,7 +223,8 @@ export async function runWeekly({ configFile, publicRepoDir, token, runKey = `ma
         ? evaluateOutput(category, tool, items)
         : { accepted: false, quality: 0, extractedText: '', reason: `Actor run ended with ${finalRun.status}.` };
       const observedPricingInfo = finalRun.pricingInfo ?? pricingInfo ?? null;
-      const comparativeRun = { ...finalRun, chargedEventCounts: adjustedComparativeCounts(finalRun, tool, category.fixture.units) };
+      const adjustedCounts = adjustedComparativeCounts(finalRun, tool, category.fixture.units);
+      const comparativeRun = { ...finalRun, chargedEventCounts: adjustedCounts.counts };
       const comparative = calculateRunCost({ run: comparativeRun, pricingInfo: observedPricingInfo, fallbackEventPrices: tool.fallbackEventPrices, units: category.fixture.units });
       const observed = calculateRunCost({ run: finalRun, pricingInfo: observedPricingInfo, fallbackEventPrices: tool.fallbackEventPrices, units: category.fixture.units });
       ledgerActual = tool.ownedByPublisher
@@ -247,11 +253,13 @@ export async function runWeekly({ configFile, publicRepoDir, token, runKey = `ma
           comparativeCostUsd: comparative.totalCostUsd,
           comparativeCostPerUnitUsd: comparative.costPerUnitUsd,
           costKnown: comparative.costKnown,
+          isSimulated: adjustedCounts.isSimulated,
+          simulationNote: adjustedCounts.isSimulated ? SIMULATED_FREE_TIER_PRICE_NOTE : null,
           priceTier: 'FREE',
           chargedEvents: comparative.chargedEvents,
           usageTotalUsd: comparative.usageTotalUsd,
-          note: tool.ownedByPublisher
-            ? 'The publisher is exempt from its own custom Actor events. Comparative cost simulates the public event count from delivered fixture units; the raw self-run counts and actual account usage remain published separately.'
+          note: adjustedCounts.isSimulated
+            ? `${SIMULATED_FREE_TIER_PRICE_NOTE}. The comparative cost uses the public event price and delivered fixture units; raw self-run counts and actual account usage remain published separately.`
             : 'Comparative cost is calculated from this authenticated run’s charged event counts and the FREE-tier list price in the run/Store snapshot; buyer-paid platform usage is included when applicable.',
         },
         storeStats: sanitizeStoreStats(storeItem),

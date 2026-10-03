@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-03T06:23:42.938Z",
+  "generatedAt": "2026-10-03T08:12:04.144Z",
   "tool": {
     "toolKey": "marielise-video-transcriber-ultimate",
     "category": "audio-to-text",
@@ -16,7 +16,11 @@
     "latestAccepted": false,
     "latestQuality": 0,
     "latestCostPerUnitUsd": null,
+    "latestCostIsSimulated": false,
+    "latestCostSimulationNote": null,
     "effectiveCostPerAcceptedUnitUsd": null,
+    "effectiveCostIsSimulated": false,
+    "effectiveCostSimulationNote": null,
     "medianLatencyMs": null,
     "latestObservedAt": "2026-10-02T22:50:43.829Z",
     "latestRunStatus": "FAILED_TO_OBSERVE",
@@ -52,7 +56,9 @@
         "comparativeCostUsd": null,
         "comparativeCostPerUnitUsd": null,
         "costKnown": false,
-        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger.",
+        "isSimulated": false,
+        "simulationNote": null
       },
       "storeStats": null,
       "output": {
@@ -83,7 +89,9 @@
         "comparativeCostUsd": null,
         "comparativeCostPerUnitUsd": null,
         "costKnown": false,
-        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger.",
+        "isSimulated": false,
+        "simulationNote": null
       },
       "storeStats": {
         "totalUsers": 523,
@@ -121,7 +129,9 @@
         "comparativeCostUsd": null,
         "comparativeCostPerUnitUsd": null,
         "costKnown": false,
-        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger.",
+        "isSimulated": false,
+        "simulationNote": null
       },
       "storeStats": {
         "totalUsers": 523,

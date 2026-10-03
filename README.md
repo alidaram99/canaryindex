@@ -25,7 +25,7 @@ Website crawlers, OCR-only tools, subtitle extractors and social-video downloade
 
 ### Current observation limit
 
-The first live run on 2026-10-03 exposed an account-level constraint rather than hiding it: the current Apify Creator plan can run the publisher's own Actors, but Apify returns HTTP 403 when it tries to run third-party public Actors. Those tools are shown as **failed to observe**, not as failed products, and are excluded from recommendations. Comparable third-party scores begin only when the account plan supports public Actor runs (or another budget-capped payment rail is verified). The raw response and zero-spend reconciliation remain public.
+The first live run on 2026-10-03 exposed an account-level constraint rather than hiding it: Apify's official [Creator Plan page](https://apify.com/pricing/creator-plan) limits Creator to the publisher's own Actors and Apify Universal Actors, so third-party public Actor runs return HTTP 403. Those tools are shown as **failed to observe**, not as failed products, and are excluded from recommendations. The cheapest zero-risk mode is public Store statistics only. The first plan explicitly documented as allowing all Actors is Starter at $19/month; a conditional alternative is Apify's experimental [$1-minimum, 14-day x402 prepaid token](https://docs.apify.com/integrations/x402) for eligible pay-per-event, limited-permission, non-Standby Actors. No plan or wallet change is automatic. The raw response and zero-spend reconciliation remain public.
 
 ## Ask an agent
 
@@ -54,6 +54,7 @@ This is MCP-friendly data rather than a fake “static MCP server.” A paid on-
 - A canary **passes** only when the Actor run succeeds and the objective output score reaches the category threshold.
 - Reliability is accepted canaries divided by completed observations.
 - Effective cost per accepted unit includes money spent on failed observations.
+- A publisher-exempt self-run is never presented as an observed buyer charge. Its comparative number carries `isSimulated: true` and the label **“simulated FREE-tier price — owner run was exempt”** in HTML, recommendation/tool JSON, published evidence JSON, and `llms.txt`.
 - Recommendations require a current pass and a public Store listing.
 - Best-quality ordering is quality → reliability → effective cost → latency.
 - Budget ordering filters by the caller's ceiling, then sorts cost → quality → reliability.

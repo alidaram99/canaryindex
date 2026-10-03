@@ -53,5 +53,9 @@
     "sponsorship",
     "affiliate relationship",
     "publisher ownership"
-  ]
+  ],
+  "costDisclosure": {
+    "booleanField": "effectiveCostIsSimulated",
+    "simulatedFreeTierPriceNote": "simulated FREE-tier price — owner run was exempt"
+  }
 }

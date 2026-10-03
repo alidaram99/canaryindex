@@ -14,13 +14,16 @@ const config = {
 };
 
 const runs = [{ startedAt: '2026-10-01', finishedAt: '2026-10-01', results: [
-  { toolKey: 'ours', runStatus: 'SUCCEEDED', publicListing: false, accepted: true, quality: 1, units: 1, latencyMs: 10, cost: { costKnown: true, comparativeCostUsd: 0.001, comparativeCostPerUnitUsd: 0.001 } },
+  { toolKey: 'ours', ownedByPublisher: true, runStatus: 'SUCCEEDED', publicListing: false, accepted: true, quality: 1, units: 1, latencyMs: 10, cost: { costKnown: true, comparativeCostUsd: 0.001, comparativeCostPerUnitUsd: 0.001, isSimulated: true, simulationNote: 'simulated FREE-tier price — owner run was exempt' } },
   { toolKey: 'cheap', runStatus: 'SUCCEEDED', publicListing: true, accepted: true, quality: 0.8, units: 1, latencyMs: 20, cost: { costKnown: true, comparativeCostUsd: 0.003, comparativeCostPerUnitUsd: 0.003 } },
   { toolKey: 'quality', runStatus: 'SUCCEEDED', publicListing: true, accepted: true, quality: 1, units: 1, latencyMs: 30, cost: { costKnown: true, comparativeCostUsd: 0.008, comparativeCostPerUnitUsd: 0.008 } },
 ]}];
 
 test('private own tool is disclosed but excluded from recommendation', () => {
   const summaries = summarizeTools(config, runs);
+  const ours = summaries.find((item) => item.toolKey === 'ours');
+  assert.equal(ours.effectiveCostIsSimulated, true);
+  assert.equal(ours.effectiveCostSimulationNote, 'simulated FREE-tier price — owner run was exempt');
   const recs = recommendations(config, summaries);
   assert.deepEqual(recs.doc.bestQuality, ['quality', 'cheap']);
   assert.equal(selectRecommendation(recs.doc, { maxCostUsdPerUnit: 0.005 }).toolKey, 'cheap');

@@ -23,13 +23,13 @@ Publisher-owned Drop-in APIs Actors are included and prominently labeled. Owners
 
 ## Tool scorecards
 
-- Document to Markdown by Drop-in APIs: https://alidaram99.github.io/canaryindex/tools/dropin-apis-document-to-markdown/
-- PDF Text Extractor by memo23: https://alidaram99.github.io/canaryindex/tools/memo23-pdf-text-extractor/
-- PDF Text Extractor by Gochujang: https://alidaram99.github.io/canaryindex/tools/gochujang-pdf-text-extractor/
-- Media URL Transcriber by Drop-in APIs: https://alidaram99.github.io/canaryindex/tools/dropin-apis-media-url-transcriber/
-- Video Transcriber Ultimate by Marielise: https://alidaram99.github.io/canaryindex/tools/marielise-video-transcriber-ultimate/
-- Incredibly Fast Audio Transcriber by Sian: https://alidaram99.github.io/canaryindex/tools/sian-incredibly-fast-audio-transcriber/
-- Video & Audio Transcriber by memo23: https://alidaram99.github.io/canaryindex/tools/memo23-video-audio-transcriber/
+- Document to Markdown by Drop-in APIs: effective cost per accepted page $0.00500 (simulated FREE-tier price — owner run was exempt); https://alidaram99.github.io/canaryindex/tools/dropin-apis-document-to-markdown/
+- PDF Text Extractor by memo23: effective cost per accepted page unknown; https://alidaram99.github.io/canaryindex/tools/memo23-pdf-text-extractor/
+- PDF Text Extractor by Gochujang: effective cost per accepted page unknown; https://alidaram99.github.io/canaryindex/tools/gochujang-pdf-text-extractor/
+- Media URL Transcriber by Drop-in APIs: effective cost per accepted started audio minute unknown (simulated FREE-tier price — owner run was exempt); https://alidaram99.github.io/canaryindex/tools/dropin-apis-media-url-transcriber/
+- Video Transcriber Ultimate by Marielise: effective cost per accepted started audio minute unknown; https://alidaram99.github.io/canaryindex/tools/marielise-video-transcriber-ultimate/
+- Incredibly Fast Audio Transcriber by Sian: effective cost per accepted started audio minute unknown; https://alidaram99.github.io/canaryindex/tools/sian-incredibly-fast-audio-transcriber/
+- Video & Audio Transcriber by memo23: effective cost per accepted started audio minute unknown; https://alidaram99.github.io/canaryindex/tools/memo23-video-audio-transcriber/
 
 ## Related projects
 

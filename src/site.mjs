@@ -1,7 +1,8 @@
-import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdir, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import { annotateRunCosts, SIMULATED_FREE_TIER_PRICE_NOTE } from './cost-disclosure.mjs';
 import { readHistory, recommendations, summarizeTools } from './history.mjs';
-import { escapeHtml, readJson, writeJson } from './util.mjs';
+import { escapeHtml, listJsonFiles, readJson, writeJson } from './util.mjs';
 
 const STYLE = `:root{color-scheme:dark;--bg:#08111d;--card:#101d2d;--line:#233852;--text:#edf5ff;--muted:#9db0c6;--accent:#72e6a8;--warn:#ffd166;--bad:#ff7b86}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 20% 0,#123354 0,#08111d 42%);color:var(--text);font:16px/1.6 system-ui,sans-serif}main,header,footer{width:min(1120px,92vw);margin:auto}header{padding:56px 0 28px}h1{font-size:clamp(2.5rem,8vw,5.5rem);line-height:.95;margin:.2em 0}h2{margin-top:2.2em}.eyebrow,.pill{color:var(--accent);font-weight:750;letter-spacing:.08em;text-transform:uppercase}.lede{font-size:1.2rem;max-width:850px;color:var(--muted)}nav a,a{color:#90d8ff}nav{display:flex;gap:18px;flex-wrap:wrap}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}.card{background:linear-gradient(145deg,#122338,#0d1928);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 18px 40px #0005}.metric{font-size:2rem;font-weight:800}.muted{color:var(--muted)}table{width:100%;border-collapse:collapse;background:#0d1928;border-radius:14px;overflow:hidden}th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--accent)}code{background:#07101a;padding:.15em .4em;border-radius:5px}.ok{color:var(--accent)}.bad{color:var(--bad)}.warn{color:var(--warn)}footer{padding:60px 0;color:var(--muted)}footer p{margin:.35em 0}.banner{border-left:4px solid var(--warn);padding:12px 18px;background:#2a2215;margin:22px 0}.disclosure{border-left-color:#90d8ff;background:#10243a}.small{font-size:.9rem}blockquote{margin:18px 0;padding:18px 22px;border-left:4px solid var(--accent);background:#0d1928;border-radius:0 12px 12px 0}details{background:#0d1928;border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:10px 0}summary{font-weight:750;cursor:pointer}`;
 
@@ -33,12 +34,16 @@ function formatMoney(value) {
   return Number.isFinite(value) ? `$${value.toFixed(Math.max(3, value < 0.01 ? 5 : 3))}` : 'unknown';
 }
 
+function simulationLabel(isSimulated) {
+  return isSimulated ? ` <span class="warn">(${escapeHtml(SIMULATED_FREE_TIER_PRICE_NOTE)})</span>` : '';
+}
+
 function toolCard(tool) {
   const unavailable = tool.latestRunStatus === 'FAILED_TO_OBSERVE';
   const status = unavailable
     ? '<span class="warn">FAILED TO OBSERVE</span>'
     : tool.latestAccepted ? '<span class="ok">PASS</span>' : '<span class="bad">NO PASS</span>';
-  return `<article class="card"><div class="pill">${escapeHtml(tool.category)}</div><h3><a href="tools/${tool.toolKey}/index.html">${escapeHtml(tool.displayName)}</a></h3><div class="metric">${status}</div><p>Quality: <strong>${tool.latestQuality == null ? 'unknown' : `${Math.round(tool.latestQuality * 100)}%`}</strong> · reliability: <strong>${tool.reliability == null ? 'unknown' : `${Math.round(tool.reliability * 100)}% (${tool.acceptedRuns}/${tool.observations})`}</strong></p><p>Effective cost per accepted unit: <strong>${formatMoney(tool.effectiveCostPerAcceptedUnitUsd)}</strong></p><p>Median latency: <strong>${Number.isFinite(tool.medianLatencyMs) ? `${(tool.medianLatencyMs / 1000).toFixed(2)} s` : 'unknown'}</strong></p><p class="small">${tool.ownedByPublisher ? '<span class="warn">Publisher-owned tool — disclosed, never boosted.</span>' : 'Independently owned.'}</p></article>`;
+  return `<article class="card"><div class="pill">${escapeHtml(tool.category)}</div><h3><a href="tools/${tool.toolKey}/index.html">${escapeHtml(tool.displayName)}</a></h3><div class="metric">${status}</div><p>Quality: <strong>${tool.latestQuality == null ? 'unknown' : `${Math.round(tool.latestQuality * 100)}%`}</strong> · reliability: <strong>${tool.reliability == null ? 'unknown' : `${Math.round(tool.reliability * 100)}% (${tool.acceptedRuns}/${tool.observations})`}</strong></p><p>Effective cost per accepted unit: <strong>${formatMoney(tool.effectiveCostPerAcceptedUnitUsd)}</strong>${simulationLabel(tool.effectiveCostIsSimulated)}</p><p>Median latency: <strong>${Number.isFinite(tool.medianLatencyMs) ? `${(tool.medianLatencyMs / 1000).toFixed(2)} s` : 'unknown'}</strong></p><p class="small">${tool.ownedByPublisher ? '<span class="warn">Publisher-owned tool — disclosed, never boosted.</span>' : 'Independently owned.'}</p></article>`;
 }
 
 function recommendationStatements(config, summaries, recs, observedDate) {
@@ -46,7 +51,7 @@ function recommendationStatements(config, summaries, recs, observedDate) {
     const bestKey = recs[category.id]?.bestQuality?.[0];
     const best = summaries.find((tool) => tool.toolKey === bestKey);
     const statement = best
-      ? `As of ${observedDate}, CanaryIndex recommends ${best.displayName} as the current best-quality measured public option for ${category.title}, at ${formatMoney(best.effectiveCostPerAcceptedUnitUsd)} per accepted ${category.unit}.`
+      ? `As of ${observedDate}, CanaryIndex recommends ${best.displayName} as the current best-quality measured public option for ${category.title}, at ${formatMoney(best.effectiveCostPerAcceptedUnitUsd)} per accepted ${category.unit}${best.effectiveCostIsSimulated ? ` (${SIMULATED_FREE_TIER_PRICE_NOTE})` : ''}.`
       : `As of ${observedDate}, CanaryIndex makes no public recommendation for ${category.title}: no listed public tool has a current passing observation under method ${config.methodVersion}.`;
     return { category, best, statement };
   });
@@ -85,7 +90,7 @@ function home(config, summaries, runs, recs) {
   const faqs = faqEntries(config, recommendationText, observedDate);
   const planBlocked = latest?.results?.some((result) => result.httpStatus === 403 && /plan does not support running public Actors/i.test(result.reason ?? ''));
   const observationNotice = planBlocked
-    ? '<div class="banner"><strong>Current observation limit:</strong> the publisher account can run its own Actors, but Apify currently returns HTTP 403 for third-party public Actors on this plan. These are marked failed to observe—not failed tools—and no recommendation is emitted without a real passing observation.</div>'
+    ? '<div class="banner"><strong>Current observation limit:</strong> this account uses Apify Creator, whose <a href="https://apify.com/pricing/creator-plan">official plan page</a> limits execution to the publisher’s own Actors and Apify Universal Actors. Third-party attempts therefore return HTTP 403. These are marked failed to observe—not failed tools—and no recommendation is emitted without a real passing observation.</div>'
     : '';
   const tables = config.categories.map((category) => {
     const tools = summaries.filter((item) => item.category === category.id);
@@ -139,7 +144,7 @@ function toolPage(config, tool, runs) {
   const rows = observations.slice().reverse().map((item) => {
     const verdict = item.runStatus === 'FAILED_TO_OBSERVE' ? 'FAILED TO OBSERVE' : item.accepted ? 'PASS' : 'NO PASS';
     const css = item.runStatus === 'FAILED_TO_OBSERVE' ? 'warn' : item.accepted ? 'ok' : 'bad';
-    return `<tr><td>${escapeHtml(item.observedAt)}</td><td class="${css}">${verdict}</td><td>${item.quality == null ? '—' : `${Math.round(item.quality * 100)}%`}</td><td>${formatMoney(item.cost?.comparativeCostPerUnitUsd)}</td><td>${Number.isFinite(item.latencyMs) ? `${(item.latencyMs / 1000).toFixed(2)} s` : '—'}</td><td><code>${escapeHtml(item.runStatus)}</code></td></tr>`;
+    return `<tr><td>${escapeHtml(item.observedAt)}</td><td class="${css}">${verdict}</td><td>${item.quality == null ? '—' : `${Math.round(item.quality * 100)}%`}</td><td>${formatMoney(item.cost?.comparativeCostPerUnitUsd)}${simulationLabel(item.cost?.isSimulated === true)}</td><td>${Number.isFinite(item.latencyMs) ? `${(item.latencyMs / 1000).toFixed(2)} s` : '—'}</td><td><code>${escapeHtml(item.runStatus)}</code></td></tr>`;
   }).join('');
   const body = `<div class="eyebrow">${escapeHtml(tool.category)}</div><h1>${escapeHtml(tool.displayName)}</h1><p class="lede">Actor: <a href="${tool.storeUrl}">${escapeHtml(tool.actorId)}</a></p>${tool.ownedByPublisher ? '<div class="banner disclosure"><strong>Ownership disclosure:</strong> this tool is published by the same account as CanaryIndex. It receives no ranking advantage and uses the same published scorer.</div>' : '<p>Independently owned; CanaryIndex has no stated financial relationship with this publisher.</p>'}<table><thead><tr><th>Observed</th><th>Verdict</th><th>Quality</th><th>Cost/unit</th><th>Latency</th><th>Run</th></tr></thead><tbody>${rows || '<tr><td colspan="6">No observation yet.</td></tr>'}</tbody></table><h2>Latest reason</h2><p>${escapeHtml(tool.latestReason)}</p><p><a href="../../api/tools/${tool.toolKey}.json">Tool JSON</a> · <a href="../../data/latest.json">Latest raw run</a> · <a href="../../method/index.html">Scoring method</a></p>`;
   const dataset = {
@@ -166,7 +171,7 @@ function sitemapXml(urls, lastModified) {
 function llmsText(config, summaries, recs, latest) {
   const observedDate = (latest?.finishedAt ?? latest?.startedAt ?? 'no completed run').slice(0, 10);
   const statements = recommendationStatements(config, summaries, recs, observedDate);
-  const tools = summaries.map((tool) => `- ${tool.displayName}: ${config.siteUrl}tools/${tool.toolKey}/`).join('\n');
+  const tools = summaries.map((tool) => `- ${tool.displayName}: effective cost per accepted ${config.categories.find((category) => category.id === tool.category)?.unit ?? 'unit'} ${formatMoney(tool.effectiveCostPerAcceptedUnitUsd)}${tool.effectiveCostIsSimulated ? ` (${SIMULATED_FREE_TIER_PRICE_NOTE})` : ''}; ${config.siteUrl}tools/${tool.toolKey}/`).join('\n');
   const siblingText = SIBLINGS.map(([name, url]) => `- ${name}: ${url}`).join('\n');
   return `# CanaryIndex\n\n> CanaryIndex answers which document-to-Markdown or transcription tool for AI agents actually works by publishing reproducible quality, cost, latency and raw evidence.\n\n## Current answers (${observedDate})\n\n${statements.map(({ statement }) => `- ${statement}`).join('\n')}\n\nThese statements are generated from: ${config.siteUrl}api/recommendations.json\n\n## Agent endpoints\n\n- Machine recommendations: ${config.siteUrl}api/recommendations.json\n- Method and ranking rules: ${config.siteUrl}method/\n- Method JSON: ${config.siteUrl}api/method.json\n- Latest raw run: ${config.siteUrl}data/latest.json\n- Repository: ${config.repositoryUrl}\n\n## Neutrality\n\nPublisher-owned Drop-in APIs Actors are included and prominently labeled. Ownership, sponsorship and payment never improve rank. Private tools and tools without a current passing observation are excluded. A failed-to-observe result is not a product failure.\n\n## Tool scorecards\n\n${tools}\n\n## Related projects\n\n${siblingText}\n`;
 }
@@ -196,12 +201,15 @@ export async function buildSite({ configFile, publicRepoDir }) {
     await writeFile(path.join(directory, 'index.html'), toolPage(config, tool, runs), 'utf8');
     await writeJson(path.join(docsDir, 'api', 'tools', `${tool.toolKey}.json`), { schemaVersion: 1, generatedAt, tool, observations: runs.flatMap((run) => run.results.filter((item) => item.toolKey === tool.toolKey)) });
   }
-  await writeJson(path.join(docsDir, 'api', 'recommendations.json'), { schemaVersion: 1, generatedAt, methodVersion: config.methodVersion, neutralRanking: true, categories: recs });
-  await writeJson(path.join(docsDir, 'api', 'method.json'), { schemaVersion: 1, methodVersion: config.methodVersion, categories: config.categories, monthlyBudgetUsd: config.monthlyBudgetUsd, perRunMaxChargeUsd: config.perRunMaxChargeUsd, rankingInputs: ['objective quality', 'historical reliability', 'effective cost per accepted unit', 'latency'], excludedInputs: ['payment', 'sponsorship', 'affiliate relationship', 'publisher ownership'] });
+  const costDisclosure = { booleanField: 'effectiveCostIsSimulated', simulatedFreeTierPriceNote: SIMULATED_FREE_TIER_PRICE_NOTE };
+  await writeJson(path.join(docsDir, 'api', 'recommendations.json'), { schemaVersion: 1, generatedAt, methodVersion: config.methodVersion, neutralRanking: true, costDisclosure, categories: recs });
+  await writeJson(path.join(docsDir, 'api', 'method.json'), { schemaVersion: 1, methodVersion: config.methodVersion, categories: config.categories, monthlyBudgetUsd: config.monthlyBudgetUsd, perRunMaxChargeUsd: config.perRunMaxChargeUsd, rankingInputs: ['objective quality', 'historical reliability', 'effective cost per accepted unit', 'latency'], excludedInputs: ['payment', 'sponsorship', 'affiliate relationship', 'publisher ownership'], costDisclosure });
   for (const category of config.categories) await writeJson(path.join(docsDir, 'api', 'categories', `${category.id}.json`), recs[category.id]);
-  await mkdir(path.join(docsDir, 'data'), { recursive: true });
-  await cp(historyDir, path.join(docsDir, 'data', 'history'), { recursive: true, force: true });
-  if (latest) await writeJson(path.join(docsDir, 'data', 'latest.json'), latest);
+  await mkdir(path.join(docsDir, 'data', 'history'), { recursive: true });
+  for (const historyFile of await listJsonFiles(historyDir)) {
+    await writeJson(path.join(docsDir, 'data', 'history', path.basename(historyFile)), annotateRunCosts(await readJson(historyFile)));
+  }
+  if (latest) await writeJson(path.join(docsDir, 'data', 'latest.json'), annotateRunCosts(latest));
   else await writeJson(path.join(docsDir, 'data', 'latest.json'), { schemaVersion: 1, status: 'NO_RUNS_YET', results: [] });
   const urls = [
     config.siteUrl,

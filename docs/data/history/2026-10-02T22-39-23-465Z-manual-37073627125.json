@@ -61,7 +61,9 @@
           }
         ],
         "usageTotalUsd": 0.00023,
-        "note": "The publisher is exempt from its own custom Actor events. Comparative cost simulates the public event count from delivered fixture units; the raw self-run counts and actual account usage remain published separately."
+        "note": "The publisher is exempt from its own custom Actor events. Comparative cost simulates the public event count from delivered fixture units; the raw self-run counts and actual account usage remain published separately.",
+        "isSimulated": true,
+        "simulationNote": "simulated FREE-tier price — owner run was exempt"
       },
       "storeStats": null,
       "output": {
@@ -113,7 +115,9 @@
         "comparativeCostUsd": null,
         "comparativeCostPerUnitUsd": null,
         "costKnown": false,
-        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger.",
+        "isSimulated": false,
+        "simulationNote": null
       },
       "storeStats": null,
       "output": {
@@ -143,7 +147,9 @@
         "comparativeCostUsd": null,
         "comparativeCostPerUnitUsd": null,
         "costKnown": false,
-        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger.",
+        "isSimulated": false,
+        "simulationNote": null
       },
       "storeStats": null,
       "output": {
@@ -204,7 +210,9 @@
           }
         ],
         "usageTotalUsd": 0.001806,
-        "note": "The publisher is exempt from its own custom Actor events. Comparative cost simulates the public event count from delivered fixture units; the raw self-run counts and actual account usage remain published separately."
+        "note": "The publisher is exempt from its own custom Actor events. Comparative cost simulates the public event count from delivered fixture units; the raw self-run counts and actual account usage remain published separately.",
+        "isSimulated": true,
+        "simulationNote": "simulated FREE-tier price — owner run was exempt"
       },
       "storeStats": null,
       "output": {
@@ -258,7 +266,9 @@
         "comparativeCostUsd": null,
         "comparativeCostPerUnitUsd": null,
         "costKnown": false,
-        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger.",
+        "isSimulated": false,
+        "simulationNote": null
       },
       "storeStats": null,
       "output": {
@@ -288,7 +298,9 @@
         "comparativeCostUsd": null,
         "comparativeCostPerUnitUsd": null,
         "costKnown": false,
-        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger.",
+        "isSimulated": false,
+        "simulationNote": null
       },
       "storeStats": null,
       "output": {
@@ -318,7 +330,9 @@
         "comparativeCostUsd": null,
         "comparativeCostPerUnitUsd": null,
         "costKnown": false,
-        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger.",
+        "isSimulated": false,
+        "simulationNote": null
       },
       "storeStats": null,
       "output": {

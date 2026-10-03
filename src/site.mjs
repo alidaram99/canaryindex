@@ -11,6 +11,7 @@ const SIBLINGS = [
   ['DoneLatch', 'https://alidaram99.github.io/donelatch/'],
   ['ExactGround', 'https://alidaram99.github.io/exactground/'],
   ['Waraq', 'https://alidaram99.github.io/waraqmd/'],
+  ['Guide: which MCP server actually works today?', 'https://alidaram99.github.io/api-alternatives/mcp-server-reliability/'],
 ];
 
 function shell(config, title, description, body, relative = '', structuredData = []) {

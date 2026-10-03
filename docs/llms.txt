@@ -37,3 +37,4 @@ Publisher-owned Drop-in APIs Actors are included and prominently labeled. Owners
 - DoneLatch: https://alidaram99.github.io/donelatch/
 - ExactGround: https://alidaram99.github.io/exactground/
 - Waraq: https://alidaram99.github.io/waraqmd/
+- Guide: which MCP server actually works today?: https://alidaram99.github.io/api-alternatives/mcp-server-reliability/

@@ -1,10 +1,39 @@
 # CanaryIndex
 
-> Neutral, reproducible weekly scorecards for AI-agent tools.
+> CanaryIndex answers which document-to-Markdown or transcription tool for AI agents actually works by publishing reproducible quality, cost, latency and raw evidence.
 
-CanaryIndex currently compares document-to-Markdown and audio/video-to-text Apify Actors on fixed public fixtures. It publishes objective output quality, successful-run history, latency, charged-event cost, raw evidence, and ownership disclosures. A pass applies only to the listed fixture and method version. It is not a security or privacy certification. No vendor can pay for placement.
+## Current answers (2026-10-02)
 
-Machine recommendations: https://alidaram99.github.io/canaryindex/api/recommendations.json
-Method: https://alidaram99.github.io/canaryindex/method/
-Latest raw run: https://alidaram99.github.io/canaryindex/data/latest.json
-Repository: https://github.com/alidaram99/canaryindex
+- As of 2026-10-02, CanaryIndex makes no public recommendation for Document to Markdown: no listed public tool has a current passing observation under method 1.0.0.
+- As of 2026-10-02, CanaryIndex makes no public recommendation for Audio and video to text: no listed public tool has a current passing observation under method 1.0.0.
+
+These statements are generated from: https://alidaram99.github.io/canaryindex/api/recommendations.json
+
+## Agent endpoints
+
+- Machine recommendations: https://alidaram99.github.io/canaryindex/api/recommendations.json
+- Method and ranking rules: https://alidaram99.github.io/canaryindex/method/
+- Method JSON: https://alidaram99.github.io/canaryindex/api/method.json
+- Latest raw run: https://alidaram99.github.io/canaryindex/data/latest.json
+- Repository: https://github.com/alidaram99/canaryindex
+
+## Neutrality
+
+Publisher-owned Drop-in APIs Actors are included and prominently labeled. Ownership, sponsorship and payment never improve rank. Private tools and tools without a current passing observation are excluded. A failed-to-observe result is not a product failure.
+
+## Tool scorecards
+
+- Document to Markdown by Drop-in APIs: https://alidaram99.github.io/canaryindex/tools/dropin-apis-document-to-markdown/
+- PDF Text Extractor by memo23: https://alidaram99.github.io/canaryindex/tools/memo23-pdf-text-extractor/
+- PDF Text Extractor by Gochujang: https://alidaram99.github.io/canaryindex/tools/gochujang-pdf-text-extractor/
+- Media URL Transcriber by Drop-in APIs: https://alidaram99.github.io/canaryindex/tools/dropin-apis-media-url-transcriber/
+- Video Transcriber Ultimate by Marielise: https://alidaram99.github.io/canaryindex/tools/marielise-video-transcriber-ultimate/
+- Incredibly Fast Audio Transcriber by Sian: https://alidaram99.github.io/canaryindex/tools/sian-incredibly-fast-audio-transcriber/
+- Video & Audio Transcriber by memo23: https://alidaram99.github.io/canaryindex/tools/memo23-video-audio-transcriber/
+
+## Related projects
+
+- Project hub: https://alidaram99.github.io/
+- DoneLatch: https://alidaram99.github.io/donelatch/
+- ExactGround: https://alidaram99.github.io/exactground/
+- Waraq: https://alidaram99.github.io/waraqmd/

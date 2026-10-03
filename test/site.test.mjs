@@ -21,8 +21,22 @@ test('site build emits scorecards, agent JSON, raw data and discovery files', as
     await buildSite({ configFile: path.join(productRoot, 'config', 'canaries.json'), publicRepoDir: dir });
     for (const file of ['docs/index.html', 'docs/method/index.html', 'docs/api/recommendations.json', 'docs/data/latest.json', 'docs/llms.txt', 'docs/robots.txt', 'docs/sitemap.xml']) await access(path.join(dir, file));
     const home = await readFile(path.join(dir, 'docs', 'index.html'), 'utf8');
-    assert.match(home, /CanaryIndex/);
+    assert.match(home, /which document-to-Markdown or transcription tool for AI agents actually works/i);
     assert.match(home, /Publisher-owned tool/);
+    assert.match(home, /Current recommendations/);
+    assert.match(home, /Generated from .*recommendations\.json/);
+    assert.match(home, /Frequently asked questions/);
+    assert.match(home, /"@type":"Dataset"/);
+    assert.match(home, /"@type":"FAQPage"/);
+    assert.match(home, /"@type":"ItemList"/);
+    assert.match(home, /https:\/\/alidaram99\.github\.io\/donelatch\//);
+    const robots = await readFile(path.join(dir, 'docs', 'robots.txt'), 'utf8');
+    for (const agent of ['Googlebot', 'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'PerplexityBot', 'ClaudeBot', 'Google-Extended']) assert.match(robots, new RegExp(`User-agent: ${agent}`));
+    const sitemap = await readFile(path.join(dir, 'docs', 'sitemap.xml'), 'utf8');
+    assert.match(sitemap, /<lastmod>2026-10-03T00:01:00Z<\/lastmod>/);
+    const llms = await readFile(path.join(dir, 'docs', 'llms.txt'), 'utf8');
+    assert.match(llms, /recommendations\.json/);
+    assert.match(llms, /Publisher-owned Drop-in APIs Actors/);
     const api = JSON.parse(await readFile(path.join(dir, 'docs', 'api', 'recommendations.json'), 'utf8'));
     assert.equal(api.neutralRanking, true);
   } finally {

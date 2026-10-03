@@ -4,7 +4,7 @@
 [![Method: public](https://img.shields.io/badge/method-public-72e6a8)](https://alidaram99.github.io/canaryindex/method/)
 [![Budget: capped](https://img.shields.io/badge/monthly%20canary%20budget-%245%20max-ffd166)](https://alidaram99.github.io/canaryindex/method/)
 
-**CanaryIndex answers one narrow question with reproducible evidence: which AI-agent tool works on the same task, at what effective cost?**
+**CanaryIndex runs the same public file through document and transcription tools and publishes the quality, the cost, and the raw result, including when a tool could not be measured.**
 
 It is not another MCP directory and it is not a pay-to-rank “trust score.” The weekly runner calls comparable Apify Actors with fixed public fixtures, calculates objective quality, records latency and charged-event cost, and publishes the raw result history.
 
@@ -12,6 +12,7 @@ It is not another MCP directory and it is not a pay-to-rank “trust score.” T
 - Machine recommendations: <https://alidaram99.github.io/canaryindex/api/recommendations.json>
 - Method and neutrality policy: <https://alidaram99.github.io/canaryindex/method/>
 - Latest raw observation: <https://alidaram99.github.io/canaryindex/data/latest.json>
+- Discovery and workflow verification: [docs/DISCOVERY-VERIFY.md](docs/DISCOVERY-VERIFY.md)
 
 ## What is covered in v0.1
 

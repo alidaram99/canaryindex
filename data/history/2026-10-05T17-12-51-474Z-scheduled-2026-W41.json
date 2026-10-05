@@ -12,7 +12,7 @@
     "monthlyCapUsd": 5,
     "spentOrReservedUsd": 0.072978,
     "remainingUsd": 4.927022,
-    "records": 22
+    "records": 23
   },
   "results": [
     {
@@ -93,6 +93,46 @@
           "computeUnits": 0.0006465277777777778
         }
       }
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "memo23-pdf-text-extractor",
+      "category": "document-to-markdown",
+      "actorId": "memo23~pdf-text-extractor",
+      "displayName": "PDF Text Extractor by memo23",
+      "storeUrl": "https://apify.com/memo23/pdf-text-extractor",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/memo23~pdf-text-extractor/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "isSimulated": false,
+        "simulationNote": null,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 277,
+        "totalUsers30Days": 89,
+        "totalRuns30Days": null,
+        "rating": 5,
+        "reviewCount": 2,
+        "observedTitle": "PDF Text Extractor — Markdown, OCR & Metadata"
+      },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
     }
   ]
 }

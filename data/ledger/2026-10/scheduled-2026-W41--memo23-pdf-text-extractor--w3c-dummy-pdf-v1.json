@@ -7,10 +7,10 @@
   "actorId": "memo23~pdf-text-extractor",
   "fixtureId": "w3c-dummy-pdf-v1",
   "reservedUsd": 0.02,
-  "status": "pending",
+  "status": "completed",
   "createdAt": "2026-10-05T17:12:51.474Z",
-  "completedAt": null,
-  "actualCostUsd": null,
+  "completedAt": "2026-10-05T17:13:19.528Z",
+  "actualCostUsd": 0,
   "apifyRunId": null,
-  "note": "Pending reservations count at their full value until a settled authenticated run supplies a lower verified cost."
+  "note": "Authenticated final run data settled the reservation to the measured buyer cost."
 }

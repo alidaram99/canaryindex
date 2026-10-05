@@ -7,10 +7,10 @@
   "actorId": "marielise.dev~video-transcriber-ultimate",
   "fixtureId": "nasa-armstrong-v1",
   "reservedUsd": 0.04,
-  "status": "pending",
+  "status": "completed",
   "createdAt": "2026-10-05T17:12:51.474Z",
-  "completedAt": null,
-  "actualCostUsd": null,
+  "completedAt": "2026-10-05T17:13:58.522Z",
+  "actualCostUsd": 0,
   "apifyRunId": null,
-  "note": "Pending reservations count at their full value until a settled authenticated run supplies a lower verified cost."
+  "note": "Authenticated final run data settled the reservation to the measured buyer cost."
 }

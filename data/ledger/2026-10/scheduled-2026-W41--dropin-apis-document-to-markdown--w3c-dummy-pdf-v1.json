@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "reservationId": "scheduled-2026-W41--dropin-apis-document-to-markdown--w3c-dummy-pdf-v1",
+  "runKey": "scheduled-2026-W41",
+  "month": "2026-10",
+  "toolKey": "dropin-apis-document-to-markdown",
+  "actorId": "dropin-apis~document-to-markdown",
+  "fixtureId": "w3c-dummy-pdf-v1",
+  "reservedUsd": 0.02,
+  "status": "pending",
+  "createdAt": "2026-10-05T17:12:51.474Z",
+  "completedAt": null,
+  "actualCostUsd": null,
+  "apifyRunId": null,
+  "note": "Pending reservations count at their full value until a settled authenticated run supplies a lower verified cost."
+}

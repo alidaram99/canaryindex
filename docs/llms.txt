@@ -2,10 +2,10 @@
 
 > CanaryIndex answers which document-to-Markdown or transcription tool for AI agents actually works by publishing reproducible quality, cost, latency and raw evidence.
 
-## Current answers (2026-10-05)
+## Current answers (2026-11-02)
 
-- As of 2026-10-05, CanaryIndex makes no public recommendation for Document to Markdown: no listed public tool has a current passing observation under method 1.0.0.
-- As of 2026-10-05, CanaryIndex makes no public recommendation for Audio and video to text: no listed public tool has a current passing observation under method 1.0.0.
+- As of 2026-11-02, CanaryIndex recommends Document to Markdown by Drop-in APIs as the current best-quality measured public option for Document to Markdown, at $0.00460 per accepted page (simulated FREE-tier price — owner run was exempt).
+- As of 2026-11-02, CanaryIndex makes no public recommendation for Audio and video to text: no listed public tool has a current passing observation under method 1.0.0.
 
 These statements are generated from: https://alidaram99.github.io/canaryindex/api/recommendations.json
 
@@ -23,7 +23,7 @@ Publisher-owned Drop-in APIs Actors are included and prominently labeled. Owners
 
 ## Tool scorecards
 
-- Document to Markdown by Drop-in APIs: effective cost per accepted page $0.00500 (simulated FREE-tier price — owner run was exempt); https://alidaram99.github.io/canaryindex/tools/dropin-apis-document-to-markdown/
+- Document to Markdown by Drop-in APIs: effective cost per accepted page $0.00460 (simulated FREE-tier price — owner run was exempt); https://alidaram99.github.io/canaryindex/tools/dropin-apis-document-to-markdown/
 - PDF Text Extractor by memo23: effective cost per accepted page unknown; https://alidaram99.github.io/canaryindex/tools/memo23-pdf-text-extractor/
 - PDF Text Extractor by Gochujang: effective cost per accepted page unknown; https://alidaram99.github.io/canaryindex/tools/gochujang-pdf-text-extractor/
 - Media URL Transcriber by Drop-in APIs: effective cost per accepted started audio minute unknown (simulated FREE-tier price — owner run was exempt); https://alidaram99.github.io/canaryindex/tools/dropin-apis-media-url-transcriber/

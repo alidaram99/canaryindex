@@ -2,17 +2,17 @@
   "schemaVersion": 1,
   "brand": "CanaryIndex",
   "methodVersion": "1.0.0",
-  "runKey": "scheduled-2026-W41",
-  "startedAt": "2026-10-05T17:12:51.474Z",
-  "finishedAt": "2026-10-05T17:14:06.484Z",
+  "runKey": "scheduled-2026-W45",
+  "startedAt": "2026-11-02T18:30:20.956Z",
+  "finishedAt": "2026-11-02T18:31:36.341Z",
   "configSha256": "49db034cf9857a6cd238e7f4798260bfa5a9f0884eeb25ddd18cc76c7fdb711a",
   "neutrality": "Publisher-owned tools are disclosed. Payment, sponsorship and ownership never affect scoring or ranking.",
   "budget": {
-    "month": "2026-10",
+    "month": "2026-11",
     "monthlyCapUsd": 5,
-    "spentOrReservedUsd": 0.073028,
-    "remainingUsd": 4.926972,
-    "records": 28
+    "spentOrReservedUsd": 0.030249,
+    "remainingUsd": 4.969751,
+    "records": 7
   },
   "results": [
     {
@@ -23,8 +23,8 @@
       "displayName": "Document to Markdown by Drop-in APIs",
       "storeUrl": "https://apify.com/dropin-apis/document-to-markdown",
       "ownedByPublisher": true,
-      "publicListing": false,
-      "runId": "eFbK9mY26gIeKFGHC",
+      "publicListing": true,
+      "runId": "ybKT9hPWDB8oteOZ1",
       "runStatus": "SUCCEEDED",
       "accepted": true,
       "quality": 1,
@@ -39,11 +39,11 @@
         "missing": []
       },
       "units": 1,
-      "latencyMs": 4655,
+      "latencyMs": 6741,
       "cost": {
-        "observedAccountSpendUsd": 0.000191,
-        "comparativeCostUsd": 0.005,
-        "comparativeCostPerUnitUsd": 0.005,
+        "observedAccountSpendUsd": 0.000249,
+        "comparativeCostUsd": 0.003,
+        "comparativeCostPerUnitUsd": 0.003,
         "costKnown": true,
         "isSimulated": false,
         "simulationNote": null,
@@ -58,14 +58,21 @@
           {
             "event": "page-converted",
             "count": 1,
-            "priceUsd": 0.0045,
-            "subtotalUsd": 0.0045
+            "priceUsd": 0.0025,
+            "subtotalUsd": 0.0025
           }
         ],
-        "usageTotalUsd": 0.000191,
+        "usageTotalUsd": 0.000249,
         "note": "Comparative cost is calculated from this authenticated run’s charged event counts and the FREE-tier list price in the run/Store snapshot; buyer-paid platform usage is included when applicable."
       },
-      "storeStats": null,
+      "storeStats": {
+        "totalUsers": 2,
+        "totalUsers30Days": 1,
+        "totalRuns30Days": null,
+        "rating": 0,
+        "reviewCount": 0,
+        "observedTitle": "PDF & Document to Markdown — DOCX, HTML for RAG"
+      },
       "output": {
         "itemCount": 1,
         "extractedText": "<!-- Page 1 -->\n\nDummy PDF file",
@@ -77,20 +84,20 @@
         ]
       },
       "run": {
-        "id": "eFbK9mY26gIeKFGHC",
+        "id": "ybKT9hPWDB8oteOZ1",
         "status": "SUCCEEDED",
-        "buildId": "rYxQQ1VxDFx793GDy",
-        "buildNumber": "0.1.4",
-        "startedAt": "2026-10-05T17:12:54.174Z",
-        "finishedAt": "2026-10-05T17:12:58.978Z",
-        "usageTotalUsd": 0.0001909797941479418,
+        "buildId": "ZhUXWOhvp1PznqAY6",
+        "buildNumber": "0.1.5",
+        "startedAt": "2026-11-02T18:30:22.795Z",
+        "finishedAt": "2026-11-02T18:30:29.737Z",
+        "usageTotalUsd": 0.00024947846865654,
         "chargedEventCounts": {
           "apify-actor-start": 1,
           "page-converted": 1
         },
         "stats": {
-          "runTimeSecs": 4.655,
-          "computeUnits": 0.0006465277777777778
+          "runTimeSecs": 6.741,
+          "computeUnits": 0.00093625
         }
       }
     },
@@ -121,8 +128,8 @@
         "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
       },
       "storeStats": {
-        "totalUsers": 277,
-        "totalUsers30Days": 89,
+        "totalUsers": 479,
+        "totalUsers30Days": 188,
         "totalRuns30Days": null,
         "rating": 5,
         "reviewCount": 2,
@@ -142,7 +149,7 @@
       "displayName": "PDF Text Extractor by Gochujang",
       "storeUrl": "https://apify.com/gochujang/pdf-text-extractor",
       "ownedByPublisher": false,
-      "publicListing": true,
+      "publicListing": false,
       "runId": null,
       "runStatus": "FAILED_TO_OBSERVE",
       "accepted": false,
@@ -160,14 +167,7 @@
         "simulationNote": null,
         "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
       },
-      "storeStats": {
-        "totalUsers": 236,
-        "totalUsers30Days": 48,
-        "totalRuns30Days": null,
-        "rating": 0,
-        "reviewCount": 0,
-        "observedTitle": "PDF Text Extractor - PDF to Markdown, Tables and RAG Chunks"
-      },
+      "storeStats": null,
       "output": {
         "itemCount": 0,
         "items": []
@@ -182,8 +182,8 @@
       "displayName": "Media URL Transcriber by Drop-in APIs",
       "storeUrl": "https://apify.com/dropin-apis/media-url-transcriber",
       "ownedByPublisher": true,
-      "publicListing": false,
-      "runId": "8XS0rKJc2RaWp4JSj",
+      "publicListing": true,
+      "runId": "fWLy1BeVF8JBVferN",
       "runStatus": "SUCCEEDED",
       "accepted": false,
       "quality": 0.5789,
@@ -198,11 +198,11 @@
         "publishedReferenceCount": 2
       },
       "units": 1,
-      "latencyMs": 16719,
+      "latencyMs": 15952,
       "cost": {
-        "observedAccountSpendUsd": 0.00005,
-        "comparativeCostUsd": 0.0061,
-        "comparativeCostPerUnitUsd": 0.0061,
+        "observedAccountSpendUsd": 0.003607,
+        "comparativeCostUsd": 0.0062,
+        "comparativeCostPerUnitUsd": 0.0062,
         "costKnown": true,
         "isSimulated": false,
         "simulationNote": null,
@@ -222,15 +222,22 @@
           },
           {
             "event": "apify-actor-start",
-            "count": 2,
+            "count": 4,
             "priceUsd": 0.00005,
-            "subtotalUsd": 0.0001
+            "subtotalUsd": 0.0002
           }
         ],
-        "usageTotalUsd": 0.00005,
+        "usageTotalUsd": 0.003607,
         "note": "Comparative cost is calculated from this authenticated run’s charged event counts and the FREE-tier list price in the run/Store snapshot; buyer-paid platform usage is included when applicable."
       },
-      "storeStats": null,
+      "storeStats": {
+        "totalUsers": 3,
+        "totalUsers30Days": 2,
+        "totalRuns30Days": null,
+        "rating": 0,
+        "reviewCount": 0,
+        "observedTitle": "Whisper Audio & Video URL Transcriber — Speech to Text"
+      },
       "output": {
         "itemCount": 1,
         "extractedText": "and I'll step off the land now. It's one small step for man. One by a fleet for man.",
@@ -243,21 +250,21 @@
         ]
       },
       "run": {
-        "id": "8XS0rKJc2RaWp4JSj",
+        "id": "fWLy1BeVF8JBVferN",
         "status": "SUCCEEDED",
-        "buildId": "xqO2I05hYqZUGuwzk",
-        "buildNumber": "0.1.5",
-        "startedAt": "2026-10-05T17:13:25.680Z",
-        "finishedAt": "2026-10-05T17:13:42.569Z",
-        "usageTotalUsd": 0.00005,
+        "buildId": "VfO4tGd35hbV2dccw",
+        "buildNumber": "0.1.7",
+        "startedAt": "2026-11-02T18:30:54.988Z",
+        "finishedAt": "2026-11-02T18:31:11.130Z",
+        "usageTotalUsd": 0.00360745999112063,
         "chargedEventCounts": {
           "audio-minute": 0,
           "audio-minute-base": 1,
-          "apify-actor-start": 2
+          "apify-actor-start": 4
         },
         "stats": {
-          "runTimeSecs": 16.719,
-          "computeUnits": 0.009288333333333332
+          "runTimeSecs": 15.952,
+          "computeUnits": 0.017724444444444445
         }
       }
     },
@@ -288,8 +295,8 @@
         "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
       },
       "storeStats": {
-        "totalUsers": 524,
-        "totalUsers30Days": 14,
+        "totalUsers": 545,
+        "totalUsers30Days": 16,
         "totalRuns30Days": null,
         "rating": 0,
         "reviewCount": 0,
@@ -328,8 +335,8 @@
         "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
       },
       "storeStats": {
-        "totalUsers": 484,
-        "totalUsers30Days": 19,
+        "totalUsers": 491,
+        "totalUsers30Days": 11,
         "totalRuns30Days": null,
         "rating": 5,
         "reviewCount": 2,
@@ -368,8 +375,8 @@
         "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
       },
       "storeStats": {
-        "totalUsers": 435,
-        "totalUsers30Days": 159,
+        "totalUsers": 655,
+        "totalUsers30Days": 202,
         "totalRuns30Days": null,
         "rating": 4.954910215788066,
         "reviewCount": 2,

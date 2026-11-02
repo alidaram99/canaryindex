@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T15:16:38.495Z",
+  "generatedAt": "2026-11-02T18:31:37.352Z",
   "tool": {
     "toolKey": "gochujang-pdf-text-extractor",
     "category": "document-to-markdown",
@@ -8,9 +8,9 @@
     "displayName": "PDF Text Extractor by Gochujang",
     "storeUrl": "https://apify.com/gochujang/pdf-text-extractor",
     "ownedByPublisher": false,
-    "publicListing": true,
+    "publicListing": false,
     "observations": 0,
-    "observationFailures": 4,
+    "observationFailures": 5,
     "acceptedRuns": 0,
     "reliability": null,
     "latestAccepted": false,
@@ -22,17 +22,10 @@
     "effectiveCostIsSimulated": false,
     "effectiveCostSimulationNote": null,
     "medianLatencyMs": null,
-    "latestObservedAt": "2026-10-05T17:14:06.484Z",
+    "latestObservedAt": "2026-11-02T18:31:36.341Z",
     "latestRunStatus": "FAILED_TO_OBSERVE",
     "latestReason": "Apify POST /acts/gochujang~pdf-text-extractor/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
-    "stats": {
-      "totalUsers": 236,
-      "totalUsers30Days": 48,
-      "totalRuns30Days": null,
-      "rating": 0,
-      "reviewCount": 0,
-      "observedTitle": "PDF Text Extractor - PDF to Markdown, Tables and RAG Chunks"
-    }
+    "stats": null
   },
   "observations": [
     {
@@ -181,6 +174,39 @@
         "reviewCount": 0,
         "observedTitle": "PDF Text Extractor - PDF to Markdown, Tables and RAG Chunks"
       },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "gochujang-pdf-text-extractor",
+      "category": "document-to-markdown",
+      "actorId": "gochujang~pdf-text-extractor",
+      "displayName": "PDF Text Extractor by Gochujang",
+      "storeUrl": "https://apify.com/gochujang/pdf-text-extractor",
+      "ownedByPublisher": false,
+      "publicListing": false,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/gochujang~pdf-text-extractor/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "isSimulated": false,
+        "simulationNote": null,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": null,
       "output": {
         "itemCount": 0,
         "items": []

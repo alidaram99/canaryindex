@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "brand": "CanaryIndex",
+  "methodVersion": "1.0.0",
+  "runKey": "scheduled-2026-W45",
+  "startedAt": "2026-11-02T18:30:20.956Z",
+  "finishedAt": "2026-11-02T18:31:36.341Z",
+  "configSha256": "49db034cf9857a6cd238e7f4798260bfa5a9f0884eeb25ddd18cc76c7fdb711a",
+  "neutrality": "Publisher-owned tools are disclosed. Payment, sponsorship and ownership never affect scoring or ranking.",
+  "budget": {
+    "month": "2026-11",
+    "monthlyCapUsd": 5,
+    "spentOrReservedUsd": 0.030249,
+    "remainingUsd": 4.969751,
+    "records": 7
+  },
+  "results": [
+    {
+      "schemaVersion": 1,
+      "toolKey": "dropin-apis-document-to-markdown",
+      "category": "document-to-markdown",
+      "actorId": "dropin-apis~document-to-markdown",
+      "displayName": "Document to Markdown by Drop-in APIs",
+      "storeUrl": "https://apify.com/dropin-apis/document-to-markdown",
+      "ownedByPublisher": true,
+      "publicListing": true,
+      "runId": "ybKT9hPWDB8oteOZ1",
+      "runStatus": "SUCCEEDED",
+      "accepted": true,
+      "quality": 1,
+      "reason": "All expected fixture tokens were present.",
+      "evidence": {
+        "score": 1,
+        "found": [
+          "dummy",
+          "pdf",
+          "file"
+        ],
+        "missing": []
+      },
+      "units": 1,
+      "latencyMs": 6741,
+      "cost": {
+        "observedAccountSpendUsd": 0.000249,
+        "comparativeCostUsd": 0.003,
+        "comparativeCostPerUnitUsd": 0.003,
+        "costKnown": true,
+        "isSimulated": false,
+        "simulationNote": null,
+        "priceTier": "FREE",
+        "chargedEvents": [
+          {
+            "event": "apify-actor-start",
+            "count": 1,
+            "priceUsd": 0.0005,
+            "subtotalUsd": 0.0005
+          },
+          {
+            "event": "page-converted",
+            "count": 1,
+            "priceUsd": 0.0025,
+            "subtotalUsd": 0.0025
+          }
+        ],
+        "usageTotalUsd": 0.000249,
+        "note": "Comparative cost is calculated from this authenticated run’s charged event counts and the FREE-tier list price in the run/Store snapshot; buyer-paid platform usage is included when applicable."
+      },
+      "storeStats": {
+        "totalUsers": 2,
+        "totalUsers30Days": 1,
+        "totalRuns30Days": null,
+        "rating": 0,
+        "reviewCount": 0,
+        "observedTitle": "PDF & Document to Markdown — DOCX, HTML for RAG"
+      },
+      "output": {
+        "itemCount": 1,
+        "extractedText": "<!-- Page 1 -->\n\nDummy PDF file",
+        "rawSha256": "60c2ad59b92975ea72d03f0d906fe55f2bc337c3cfc8cf1a7c2026b16ad9fe67",
+        "items": [
+          {
+            "markdown": "<!-- Page 1 -->\n\nDummy PDF file"
+          }
+        ]
+      },
+      "run": {
+        "id": "ybKT9hPWDB8oteOZ1",
+        "status": "SUCCEEDED",
+        "buildId": "ZhUXWOhvp1PznqAY6",
+        "buildNumber": "0.1.5",
+        "startedAt": "2026-11-02T18:30:22.795Z",
+        "finishedAt": "2026-11-02T18:30:29.737Z",
+        "usageTotalUsd": 0.00024947846865654,
+        "chargedEventCounts": {
+          "apify-actor-start": 1,
+          "page-converted": 1
+        },
+        "stats": {
+          "runTimeSecs": 6.741,
+          "computeUnits": 0.00093625
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "memo23-pdf-text-extractor",
+      "category": "document-to-markdown",
+      "actorId": "memo23~pdf-text-extractor",
+      "displayName": "PDF Text Extractor by memo23",
+      "storeUrl": "https://apify.com/memo23/pdf-text-extractor",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/memo23~pdf-text-extractor/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "isSimulated": false,
+        "simulationNote": null,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 479,
+        "totalUsers30Days": 188,
+        "totalRuns30Days": null,
+        "rating": 5,
+        "reviewCount": 2,
+        "observedTitle": "PDF Text Extractor — Markdown, OCR & Metadata"
+      },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "gochujang-pdf-text-extractor",
+      "category": "document-to-markdown",
+      "actorId": "gochujang~pdf-text-extractor",
+      "displayName": "PDF Text Extractor by Gochujang",
+      "storeUrl": "https://apify.com/gochujang/pdf-text-extractor",
+      "ownedByPublisher": false,
+      "publicListing": false,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/gochujang~pdf-text-extractor/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "isSimulated": false,
+        "simulationNote": null,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": null,
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "dropin-apis-media-url-transcriber",
+      "category": "audio-to-text",
+      "actorId": "dropin-apis~media-url-transcriber",
+      "displayName": "Media URL Transcriber by Drop-in APIs",
+      "storeUrl": "https://apify.com/dropin-apis/media-url-transcriber",
+      "ownedByPublisher": true,
+      "publicListing": true,
+      "runId": "fWLy1BeVF8JBVferN",
+      "runStatus": "SUCCEEDED",
+      "accepted": false,
+      "quality": 0.5789,
+      "reason": "Word error rate 0.4211 against the published reference transcript.",
+      "evidence": {
+        "reference": "And uh step off the LM now. That's one small step for a man, one giant leap for mankind.",
+        "wer": 0.42105263157894735,
+        "distance": 8,
+        "expectedWords": 19,
+        "actualWords": 19,
+        "acceptedReference": "And uh step off the LM now. That's one small step for a man, one giant leap for mankind.",
+        "publishedReferenceCount": 2
+      },
+      "units": 1,
+      "latencyMs": 15952,
+      "cost": {
+        "observedAccountSpendUsd": 0.003607,
+        "comparativeCostUsd": 0.0062,
+        "comparativeCostPerUnitUsd": 0.0062,
+        "costKnown": true,
+        "isSimulated": false,
+        "simulationNote": null,
+        "priceTier": "FREE",
+        "chargedEvents": [
+          {
+            "event": "audio-minute",
+            "count": 0,
+            "priceUsd": 0.014,
+            "subtotalUsd": 0
+          },
+          {
+            "event": "audio-minute-base",
+            "count": 1,
+            "priceUsd": 0.006,
+            "subtotalUsd": 0.006
+          },
+          {
+            "event": "apify-actor-start",
+            "count": 4,
+            "priceUsd": 0.00005,
+            "subtotalUsd": 0.0002
+          }
+        ],
+        "usageTotalUsd": 0.003607,
+        "note": "Comparative cost is calculated from this authenticated run’s charged event counts and the FREE-tier list price in the run/Store snapshot; buyer-paid platform usage is included when applicable."
+      },
+      "storeStats": {
+        "totalUsers": 3,
+        "totalUsers30Days": 2,
+        "totalRuns30Days": null,
+        "rating": 0,
+        "reviewCount": 0,
+        "observedTitle": "Whisper Audio & Video URL Transcriber — Speech to Text"
+      },
+      "output": {
+        "itemCount": 1,
+        "extractedText": "and I'll step off the land now. It's one small step for man. One by a fleet for man.",
+        "rawSha256": "96841b5f0c652d6a243e81a9f8564591f0f911e562049551b6d4708e10cd1b9d",
+        "items": [
+          {
+            "text": "and I'll step off the land now. It's one small step for man. One by a fleet for man.",
+            "error": null
+          }
+        ]
+      },
+      "run": {
+        "id": "fWLy1BeVF8JBVferN",
+        "status": "SUCCEEDED",
+        "buildId": "VfO4tGd35hbV2dccw",
+        "buildNumber": "0.1.7",
+        "startedAt": "2026-11-02T18:30:54.988Z",
+        "finishedAt": "2026-11-02T18:31:11.130Z",
+        "usageTotalUsd": 0.00360745999112063,
+        "chargedEventCounts": {
+          "audio-minute": 0,
+          "audio-minute-base": 1,
+          "apify-actor-start": 4
+        },
+        "stats": {
+          "runTimeSecs": 15.952,
+          "computeUnits": 0.017724444444444445
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "marielise-video-transcriber-ultimate",
+      "category": "audio-to-text",
+      "actorId": "marielise.dev~video-transcriber-ultimate",
+      "displayName": "Video Transcriber Ultimate by Marielise",
+      "storeUrl": "https://apify.com/marielise.dev/video-transcriber-ultimate",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/marielise.dev~video-transcriber-ultimate/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "isSimulated": false,
+        "simulationNote": null,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 545,
+        "totalUsers30Days": 16,
+        "totalRuns30Days": null,
+        "rating": 0,
+        "reviewCount": 0,
+        "observedTitle": "Video Transcriber - Video & Audio to Text Transcript"
+      },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "sian-incredibly-fast-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "sian.agency~INCREDIBLY-FAST-audio-transcriber",
+      "displayName": "Incredibly Fast Audio Transcriber by Sian",
+      "storeUrl": "https://apify.com/sian.agency/INCREDIBLY-FAST-audio-transcriber",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/sian.agency~INCREDIBLY-FAST-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "isSimulated": false,
+        "simulationNote": null,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 491,
+        "totalUsers30Days": 11,
+        "totalRuns30Days": null,
+        "rating": 5,
+        "reviewCount": 2,
+        "observedTitle": "Transcribe Video to Text & Audio to Text — 99+ Languages"
+      },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "memo23-video-audio-transcriber",
+      "category": "audio-to-text",
+      "actorId": "memo23~video-audio-transcriber",
+      "displayName": "Video & Audio Transcriber by memo23",
+      "storeUrl": "https://apify.com/memo23/video-audio-transcriber",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/memo23~video-audio-transcriber/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "isSimulated": false,
+        "simulationNote": null,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 655,
+        "totalUsers30Days": 202,
+        "totalRuns30Days": null,
+        "rating": 4.954910215788066,
+        "reviewCount": 2,
+        "observedTitle": "Media Transcriber · Any URL, RSS & Podcast to Text"
+      },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    }
+  ]
+}

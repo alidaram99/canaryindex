@@ -7,10 +7,10 @@
   "actorId": "dropin-apis~media-url-transcriber",
   "fixtureId": "nasa-armstrong-v1",
   "reservedUsd": 0.03,
-  "status": "pending",
+  "status": "unknown",
   "createdAt": "2026-11-02T18:30:20.956Z",
-  "completedAt": null,
-  "actualCostUsd": null,
-  "apifyRunId": null,
-  "note": "Pending reservations count at their full value until a settled authenticated run supplies a lower verified cost."
+  "completedAt": "2026-11-02T18:31:28.736Z",
+  "actualCostUsd": 0.003607,
+  "apifyRunId": "fWLy1BeVF8JBVferN",
+  "note": "Authenticated final run data settled the reservation to the measured buyer cost."
 }

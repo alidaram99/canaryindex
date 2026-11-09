@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-02T18:31:37.352Z",
+  "generatedAt": "2026-11-09T18:56:03.830Z",
   "tool": {
     "toolKey": "memo23-pdf-text-extractor",
     "category": "document-to-markdown",
@@ -10,7 +10,7 @@
     "ownedByPublisher": false,
     "publicListing": true,
     "observations": 0,
-    "observationFailures": 5,
+    "observationFailures": 6,
     "acceptedRuns": 0,
     "reliability": null,
     "latestAccepted": false,
@@ -22,12 +22,12 @@
     "effectiveCostIsSimulated": false,
     "effectiveCostSimulationNote": null,
     "medianLatencyMs": null,
-    "latestObservedAt": "2026-11-02T18:31:36.341Z",
+    "latestObservedAt": "2026-11-09T18:56:02.375Z",
     "latestRunStatus": "FAILED_TO_OBSERVE",
     "latestReason": "Apify POST /acts/memo23~pdf-text-extractor/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
     "stats": {
-      "totalUsers": 479,
-      "totalUsers30Days": 188,
+      "totalUsers": 520,
+      "totalUsers30Days": 190,
       "totalRuns30Days": null,
       "rating": 5,
       "reviewCount": 2,
@@ -216,6 +216,46 @@
       "storeStats": {
         "totalUsers": 479,
         "totalUsers30Days": 188,
+        "totalRuns30Days": null,
+        "rating": 5,
+        "reviewCount": 2,
+        "observedTitle": "PDF Text Extractor — Markdown, OCR & Metadata"
+      },
+      "output": {
+        "itemCount": 0,
+        "items": []
+      },
+      "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "memo23-pdf-text-extractor",
+      "category": "document-to-markdown",
+      "actorId": "memo23~pdf-text-extractor",
+      "displayName": "PDF Text Extractor by memo23",
+      "storeUrl": "https://apify.com/memo23/pdf-text-extractor",
+      "ownedByPublisher": false,
+      "publicListing": true,
+      "runId": null,
+      "runStatus": "FAILED_TO_OBSERVE",
+      "accepted": false,
+      "quality": 0,
+      "reason": "Apify POST /acts/memo23~pdf-text-extractor/runs returned 403: You cannot run this public Actor. Your current plan does not support running public Actors.",
+      "httpStatus": 403,
+      "units": 1,
+      "latencyMs": null,
+      "cost": {
+        "observedAccountSpendUsd": null,
+        "comparativeCostUsd": null,
+        "comparativeCostPerUnitUsd": null,
+        "costKnown": false,
+        "isSimulated": false,
+        "simulationNote": null,
+        "note": "No stable billing observation was available; the full reservation remains in the budget ledger."
+      },
+      "storeStats": {
+        "totalUsers": 520,
+        "totalUsers30Days": 190,
         "totalRuns30Days": null,
         "rating": 5,
         "reviewCount": 2,

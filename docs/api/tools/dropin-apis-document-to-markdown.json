@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-02T18:31:37.352Z",
+  "generatedAt": "2026-11-09T18:56:03.830Z",
   "tool": {
     "toolKey": "dropin-apis-document-to-markdown",
     "category": "document-to-markdown",
@@ -9,20 +9,20 @@
     "storeUrl": "https://apify.com/dropin-apis/document-to-markdown",
     "ownedByPublisher": true,
     "publicListing": true,
-    "observations": 5,
+    "observations": 6,
     "observationFailures": 0,
-    "acceptedRuns": 5,
+    "acceptedRuns": 6,
     "reliability": 1,
     "latestAccepted": true,
     "latestQuality": 1,
     "latestCostPerUnitUsd": 0.003,
     "latestCostIsSimulated": false,
     "latestCostSimulationNote": null,
-    "effectiveCostPerAcceptedUnitUsd": 0.0046,
+    "effectiveCostPerAcceptedUnitUsd": 0.004333,
     "effectiveCostIsSimulated": true,
     "effectiveCostSimulationNote": "simulated FREE-tier price — owner run was exempt",
-    "medianLatencyMs": 6045,
-    "latestObservedAt": "2026-11-02T18:31:36.341Z",
+    "medianLatencyMs": 5895.5,
+    "latestObservedAt": "2026-11-09T18:56:02.375Z",
     "latestRunStatus": "SUCCEEDED",
     "latestReason": "All expected fixture tokens were present.",
     "stats": {
@@ -434,6 +434,92 @@
         "stats": {
           "runTimeSecs": 6.741,
           "computeUnits": 0.00093625
+        }
+      }
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "dropin-apis-document-to-markdown",
+      "category": "document-to-markdown",
+      "actorId": "dropin-apis~document-to-markdown",
+      "displayName": "Document to Markdown by Drop-in APIs",
+      "storeUrl": "https://apify.com/dropin-apis/document-to-markdown",
+      "ownedByPublisher": true,
+      "publicListing": true,
+      "runId": "0h5XerDfaYU7huWJI",
+      "runStatus": "SUCCEEDED",
+      "accepted": true,
+      "quality": 1,
+      "reason": "All expected fixture tokens were present.",
+      "evidence": {
+        "score": 1,
+        "found": [
+          "dummy",
+          "pdf",
+          "file"
+        ],
+        "missing": []
+      },
+      "units": 1,
+      "latencyMs": 3203,
+      "cost": {
+        "observedAccountSpendUsd": 0.000151,
+        "comparativeCostUsd": 0.003,
+        "comparativeCostPerUnitUsd": 0.003,
+        "costKnown": true,
+        "isSimulated": false,
+        "simulationNote": null,
+        "priceTier": "FREE",
+        "chargedEvents": [
+          {
+            "event": "apify-actor-start",
+            "count": 1,
+            "priceUsd": 0.0005,
+            "subtotalUsd": 0.0005
+          },
+          {
+            "event": "page-converted",
+            "count": 1,
+            "priceUsd": 0.0025,
+            "subtotalUsd": 0.0025
+          }
+        ],
+        "usageTotalUsd": 0.000151,
+        "note": "Comparative cost is calculated from this authenticated run’s charged event counts and the FREE-tier list price in the run/Store snapshot; buyer-paid platform usage is included when applicable."
+      },
+      "storeStats": {
+        "totalUsers": 2,
+        "totalUsers30Days": 1,
+        "totalRuns30Days": null,
+        "rating": 0,
+        "reviewCount": 0,
+        "observedTitle": "PDF & Document to Markdown — DOCX, HTML for RAG"
+      },
+      "output": {
+        "itemCount": 1,
+        "extractedText": "<!-- Page 1 -->\n\nDummy PDF file",
+        "rawSha256": "60c2ad59b92975ea72d03f0d906fe55f2bc337c3cfc8cf1a7c2026b16ad9fe67",
+        "items": [
+          {
+            "markdown": "<!-- Page 1 -->\n\nDummy PDF file"
+          }
+        ]
+      },
+      "run": {
+        "id": "0h5XerDfaYU7huWJI",
+        "status": "SUCCEEDED",
+        "buildId": "ZhUXWOhvp1PznqAY6",
+        "buildNumber": "0.1.5",
+        "startedAt": "2026-11-09T18:54:45.880Z",
+        "finishedAt": "2026-11-09T18:54:49.232Z",
+        "usageTotalUsd": 0.0001505192887170447,
+        "chargedEventCounts": {
+          "apify-actor-start": 1,
+          "page-converted": 1
+        },
+        "stats": {
+          "runTimeSecs": 3.203,
+          "computeUnits": 0.0004448611111111111
         }
       }
     }

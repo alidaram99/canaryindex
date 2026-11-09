@@ -10,9 +10,9 @@
   "budget": {
     "month": "2026-11",
     "monthlyCapUsd": 5,
-    "spentOrReservedUsd": 0.050249,
-    "remainingUsd": 4.949751,
-    "records": 10
+    "spentOrReservedUsd": 0.053747,
+    "remainingUsd": 4.946253,
+    "records": 11
   },
   "results": [
     {
@@ -180,6 +180,100 @@
         "items": []
       },
       "run": null
+    },
+    {
+      "schemaVersion": 1,
+      "toolKey": "dropin-apis-media-url-transcriber",
+      "category": "audio-to-text",
+      "actorId": "dropin-apis~media-url-transcriber",
+      "displayName": "Media URL Transcriber by Drop-in APIs",
+      "storeUrl": "https://apify.com/dropin-apis/media-url-transcriber",
+      "ownedByPublisher": true,
+      "publicListing": true,
+      "runId": "1cOWyMgdgZ3bVCatY",
+      "runStatus": "SUCCEEDED",
+      "accepted": false,
+      "quality": 0.5789,
+      "reason": "Word error rate 0.4211 against the published reference transcript.",
+      "evidence": {
+        "reference": "And uh step off the LM now. That's one small step for a man, one giant leap for mankind.",
+        "wer": 0.42105263157894735,
+        "distance": 8,
+        "expectedWords": 19,
+        "actualWords": 19,
+        "acceptedReference": "And uh step off the LM now. That's one small step for a man, one giant leap for mankind.",
+        "publishedReferenceCount": 2
+      },
+      "units": 1,
+      "latencyMs": 15461,
+      "cost": {
+        "observedAccountSpendUsd": 0.003498,
+        "comparativeCostUsd": 0.0062,
+        "comparativeCostPerUnitUsd": 0.0062,
+        "costKnown": true,
+        "isSimulated": false,
+        "simulationNote": null,
+        "priceTier": "FREE",
+        "chargedEvents": [
+          {
+            "event": "audio-minute",
+            "count": 0,
+            "priceUsd": 0.014,
+            "subtotalUsd": 0
+          },
+          {
+            "event": "audio-minute-base",
+            "count": 1,
+            "priceUsd": 0.006,
+            "subtotalUsd": 0.006
+          },
+          {
+            "event": "apify-actor-start",
+            "count": 4,
+            "priceUsd": 0.00005,
+            "subtotalUsd": 0.0002
+          }
+        ],
+        "usageTotalUsd": 0.003498,
+        "note": "Comparative cost is calculated from this authenticated run’s charged event counts and the FREE-tier list price in the run/Store snapshot; buyer-paid platform usage is included when applicable."
+      },
+      "storeStats": {
+        "totalUsers": 3,
+        "totalUsers30Days": 2,
+        "totalRuns30Days": null,
+        "rating": 0,
+        "reviewCount": 0,
+        "observedTitle": "Whisper Audio & Video URL Transcriber — Speech to Text"
+      },
+      "output": {
+        "itemCount": 1,
+        "extractedText": "and I'll step off the land now. It's one small step for man. One by a fleet for man.",
+        "rawSha256": "96841b5f0c652d6a243e81a9f8564591f0f911e562049551b6d4708e10cd1b9d",
+        "items": [
+          {
+            "text": "and I'll step off the land now. It's one small step for man. One by a fleet for man.",
+            "error": null
+          }
+        ]
+      },
+      "run": {
+        "id": "1cOWyMgdgZ3bVCatY",
+        "status": "SUCCEEDED",
+        "buildId": "VfO4tGd35hbV2dccw",
+        "buildNumber": "0.1.7",
+        "startedAt": "2026-11-09T18:55:17.547Z",
+        "finishedAt": "2026-11-09T18:55:33.142Z",
+        "usageTotalUsd": 0.0034981980988846887,
+        "chargedEventCounts": {
+          "audio-minute": 0,
+          "audio-minute-base": 1,
+          "apify-actor-start": 4
+        },
+        "stats": {
+          "runTimeSecs": 15.461,
+          "computeUnits": 0.01717888888888889
+        }
+      }
     }
   ]
 }
